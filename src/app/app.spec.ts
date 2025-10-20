@@ -1,10 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
+import { provideRouter, withDisabledInitialNavigation } from '@angular/router';
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [App],
+      imports: [App], // Standalone
+      providers: [provideRouter([], withDisabledInitialNavigation())]
     }).compileComponents();
   });
 
@@ -14,10 +16,18 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', () => {
+  it('should render navbar brand', () => {
     const fixture = TestBed.createComponent(App);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, deniz-portfolio');
+    const el = fixture.nativeElement as HTMLElement;
+    // prüfe deine Navbar (passt "Deniz" ggf. an deinen brand-Text an)
+    expect(el.querySelector('.nav__brand')?.textContent?.trim()).toContain('Deniz');
+  });
+
+  it('should have a router outlet', () => {
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+    const el = fixture.nativeElement as HTMLElement;
+    expect(el.querySelector('router-outlet')).not.toBeNull();
   });
 });

@@ -1,0 +1,39 @@
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<header class="nav">
+  <div class="nav__inner">
+    <!-- Brand / Logo -->
+    <a class="nav__brand" routerLink="/" aria-label="Startseite">{{ brand }}</a>
+
+    <!-- Mobile Toggle -->
+    <button  class="nav__toggle" [class.open]="menuOpen()"
+      class="nav__toggle"
+      type="button"
+      aria-label="Menü umschalten"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="primary-nav"
+      (click)="toggle()">
+      <span></span><span></span><span></span>
+    </button>
+
+
+
+    <!-- Primary Navigation -->
+    <nav
+      id="primary-nav"
+      class="nav__links"
+      role="navigation"
+      aria-label="Hauptnavigation"
+      [class.open]="menuOpen()">
+
+      <a
+        *ngFor="let it of items"
+        [routerLink]="['/', it.path]"
+        [routerLinkActive]="'active'"
+        [routerLinkActiveOptions]="{ exact: it.exact || false }"
+        (click)="closeOnNavigate()">
+        {{ it.label }}
+      </a>
+    </nav>
+  </div>
+</header>
