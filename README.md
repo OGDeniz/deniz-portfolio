@@ -1,59 +1,88 @@
-# DenizPortfolio
+# Deniz Portfolio – Persönliche Website mit Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.6.
+Dieses Repository enthält den Quellcode für die persönliche Portfolio-Webseite von Deniz, umgesetzt mit dem Angular-Framework. Die Anwendung zeigt übersichtlich und responsiv technische Fähigkeiten, Projekte, Lebenslauf-Daten und Kontaktinformationen. Die Codebasis ist modular strukturiert und verwendet globale SCSS-Variablen, damit Styles konsistent und leicht anpassbar sind.
 
-## Development server
+## Funktionen
 
-To start a local development server, run:
+- Startseite mit Rollen-Animation: Die Landing-Page stellt Deniz mit rotierenden Rollen wie "Full‑Stack Developer", "Frontend Engineer" und "UI/UX Enthusiast" vor. Außerdem werden Kennzahlen (z. B. abgeschlossene Projekte, Jahre Erfahrung) angezeigt und ein Button zum Herunterladen des Lebenslaufs bzw. zur Navigation zu den Projekten bereitgestellt.
+- Skills-Seite: Technische Skills (z. B. HTML, CSS/SCSS, JavaScript, TypeScript, Angular) und Soft-Skills (Kommunikation, Teamarbeit, Problemlösung, Kreativität) werden mit Prozentwerten dargestellt. Jedes Skill-Item zeigt eine Fortschrittsleiste und einen numerischen Prozentsatz.
+- Projekte: Ausgewählte Projekte werden in einem responsiven Kartenraster gezeigt. Jede Karte enthält Titel, kurze Beschreibung, verwendete Technologien, Vorschaubild und optional einen Link.
+- Lebenslauf & Kontakt: Separate Seiten ermöglichen das Lesen des Lebenslaufs, den Download als PDF und das Senden von Nachrichten über ein Kontaktformular (Komponenten unter `src/app/features/resume` und `src/app/features/contact`).
+- Anpassbares Design: Farben, Abstände und Typografie sind in `src/styles.scss` zentral definiert. Passe CSS-Variablen wie `--clr-primary`, `--clr-secondary` oder die Abstandsvariablen (`--space-sm`, `--space-lg`) an, um das Design deinem Branding anzupassen.
+
+## Voraussetzungen
+
+- Node.js (v14 oder neuer)
+- Angular CLI (v15 oder neuer). Installation (global):
+
+```bash
+npm install -g @angular/cli
+```
+
+## Installation
+
+1. Repository klonen:
+
+```bash
+git clone https://github.com/OGDeniz/deniz-portfolio.git
+cd deniz-portfolio
+```
+
+2. Abhängigkeiten installieren:
+
+```bash
+npm install
+```
+
+3. Entwicklungsserver starten:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Öffne danach `http://localhost:4200/` im Browser. Die Anwendung lädt automatisch neu, wenn du Quellcode änderst.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+4. Für Produktion bauen:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Die kompilierten Dateien liegen dann im `dist/`-Ordner bereit zur Bereitstellung.
 
-## Running unit tests
+## Projektstruktur (Kurzüberblick)
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+```
+deniz-portfolio/
+├── src/
+│   ├── app/
+│   │   ├── features/
+│   │   │   ├── home/       # Startseite (Rollen-Animation, Kennzahlen)
+│   │   │   ├── skills/     # Skills-Seite (technisch & soft skills)
+│   │   │   ├── projects/   # Projekte (Kartenübersicht)
+│   │   │   ├── resume/     # Lebenslauf-Seite
+│   │   │   └── contact/    # Kontaktformular
+│   │   ├── app.routes.ts   # Routing-Konfiguration
+│   │   └── app.component.* # Root-Component
+│   ├── assets/             # Statische Assets (Bilder, Icons)
+│   ├── public/             # Public-Dateien (z. B. Projektbilder)
+│   └── styles.scss         # Globale Styles & Variablen
+├── angular.json            # Angular Workspace Konfiguration
+├── package.json            # Projekt-Metadaten, Scripts, Dependencies
+└── README.md               # (diese Datei)
 ```
 
-## Running end-to-end tests
+## Anpassungen
 
-For end-to-end (e2e) testing, run:
+- Farben & Abstände ändern: Bearbeite `src/styles.scss` und passe die CSS-Variablen an.
+- Skills aktualisieren: Öffne `src/app/features/skills/skills.component.ts` und aktualisiere die Arrays `technicalSkills` und `softSkills` (Name + Level 0–100).
+- Projekte hinzufügen/ändern: Bearbeite das `projects`-Array in `src/app/features/projects/projects.component.ts`. Jedes Objekt sollte `title`, `description`, `technologies`, `image` (in `public/projects/`) und optional `link` enthalten.
+- Routing: Passe `src/app/app.routes.ts` an, wenn du neue Seiten hinzufügst oder Pfade änderst. Die Features werden lazy-loaded, um die Performance zu verbessern.
 
-```bash
-ng e2e
-```
+## Mitwirken
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Beiträge sind willkommen! Wenn du einen Fehler findest oder ein Feature vorschlagen möchtest, öffne ein Issue oder sende einen Pull Request. Bitte halte dich an den bestehenden Code-Stil.
 
-## Additional Resources
+## Lizenz
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Dieses Projekt steht unter der MIT-Lizenz. Details findest du in der `LICENSE`-Datei.
