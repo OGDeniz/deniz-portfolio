@@ -1,6 +1,6 @@
 # Deniz Portfolio – Persönliche Website mit Angular
 
-Dieses Repository enthält den Quellcode für die persönliche Portfolio-Webseite von Deniz, umgesetzt mit dem Angular-Framework. Die Anwendung zeigt übersichtlich und responsiv technische Fähigkeiten, Projekte, Lebenslauf-Daten und Kontaktinformationen. Die Codebasis ist modular strukturiert und verwendet globale SCSS-Variablen, damit Styles konsistent und leicht anpassbar sind.
+Dieses Repository enthält den Quellcode für die persönliche Portfolio-Webseite von mir Deniz Yavuzkaya, umgesetzt mit dem Angular-Framework. Die Anwendung zeigt übersichtlich und responsiv technische Fähigkeiten, Projekte, Lebenslauf-Daten und Kontaktinformationen. Die Codebasis ist modular strukturiert und verwendet globale SCSS-Variablen, damit Styles konsistent und leicht anpassbar sind.
 
 ## Funktionen
 
