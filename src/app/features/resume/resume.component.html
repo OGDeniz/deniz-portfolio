@@ -1,0 +1,115 @@
+<!-- src/app/features/resume/resume.component.html -->
+<section class="resume-page">
+  <h1 class="gradient-text">Lebenslauf</h1>
+
+  <!-- Persönliche Daten -->
+  <section class="resume-section">
+    <h2>Persönliche Daten</h2>
+    <ul class="info-list">
+      <li><strong>Name:</strong> {{ personalInfo.name }}</li>
+      <li><strong>Geboren am:</strong> {{ personalInfo.birthDate }} in {{ personalInfo.birthPlace }}</li>
+      <li><strong>Familienstand:</strong> {{ personalInfo.familyStatus }}</li>
+      <li><strong>Adresse:</strong> {{ personalInfo.address }}</li>
+      <li><strong>E-Mail:</strong> <a [href]="'mailto:' + personalInfo.email">{{ personalInfo.email }}</a></li>
+      <li><strong>Telefon:</strong> <a [href]="'tel:' + personalInfo.phone">{{ personalInfo.phone }}</a></li>
+    </ul>
+  </section>
+
+  <!-- Schulbildung -->
+  <section class="resume-section">
+    <h2>Schulausbildung</h2>
+    <ul class="timeline">
+      @for (item of education; track item.title) {
+        <li>
+          <span class="period">{{ item.period }}</span>
+          <div class="content">
+            <strong>{{ item.title }}</strong><br />
+            <span *ngIf="item.institution">{{ item.institution }}</span>
+          </div>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <!-- Berufliche Ausbildung -->
+  <section class="resume-section">
+    <h2>Berufliche Ausbildung</h2>
+    <ul class="timeline">
+      @for (item of vocationalTraining; track item.title) {
+        <li>
+          <span class="period">{{ item.period }}</span>
+          <div class="content">
+            <strong>{{ item.title }}</strong><br />
+            <span *ngIf="item.institution">{{ item.institution }}</span>
+            <ul *ngIf="item.details" class="sub-list">
+              @for (detail of item.details; track detail) {
+                <li>{{ detail }}</li>
+              }
+            </ul>
+          </div>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <!-- Berufliche Erfahrung -->
+  <section class="resume-section">
+    <h2>Berufliche Erfahrung</h2>
+    <ul class="timeline">
+      @for (item of workExperience; track item.title + item.period) {
+        <li>
+          <span class="period">{{ item.period }}</span>
+          <div class="content">
+            <strong>{{ item.title }}</strong><br />
+            <span *ngIf="item.company">{{ item.company }}</span>
+            <ul *ngIf="item.details" class="sub-list">
+              @for (detail of item.details; track detail) {
+                <li>{{ detail }}</li>
+              }
+            </ul>
+          </div>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <!-- Zusätzliche Qualifikationen -->
+  <section class="resume-section">
+    <h2>Zusätzliche Qualifikationen</h2>
+    <ul class="simple-list">
+      @for (qual of qualifications; track qual) {
+        <li>{{ qual }}</li>
+      }
+    </ul>
+  </section>
+
+  <!-- Sprachkenntnisse -->
+  <section class="resume-section">
+    <h2>Sprachkenntnisse</h2>
+    <ul class="info-list">
+      @for (lang of languages; track lang.language) {
+        <li><strong>{{ lang.language }}:</strong> {{ lang.level }}</li>
+      }
+    </ul>
+  </section>
+
+  <!-- Kenntnisse und Fähigkeiten -->
+  <section class="resume-section">
+    <h2>Kenntnisse &amp; Fähigkeiten</h2>
+    <ul class="simple-list">
+      @for (skill of skills; track skill) {
+        <li>{{ skill }}</li>
+      }
+    </ul>
+  </section>
+
+  <!-- Hobbys & Interessen -->
+  <section class="resume-section">
+    <h2>Hobbys &amp; Interessen</h2>
+    <ul class="simple-list">
+      @for (hobby of hobbies; track hobby) {
+        <li>{{ hobby }}</li>
+      }
+    </ul>
+  </section>
+</section>

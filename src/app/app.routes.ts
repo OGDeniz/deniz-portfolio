@@ -17,6 +17,11 @@ export const routes: Routes = [
     path: 'resume',
     loadComponent: () => import('./features/resume/resume.component').then((m) => m.ResumeComponent)
   },
+    {
+    path: 'resume',
+    loadComponent: () =>
+      import('./features/resume/resume.component').then(m => m.ResumeComponent)
+  },
   {
     path: 'contact',
     loadComponent: () => import('./features/contact/contact.component').then((m) => m.ContactComponent)
