@@ -10,9 +10,12 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  roles = ['Full-Stack Developer', 'Frontend Engineer', 'UI/UX Enthusiast'];
+  roles = ['Full-Stack Developer','Game Developer', 'Software Engineer' ,'Frontend Engineer', 'UI/UX Enthusiast'];
   private currentRoleIndex = 0;
-  private roleIntervalId: number | undefined;
+  private roleIntervalId: ReturnType<typeof setInterval> | undefined;
+  private roleChangeTimeout: ReturnType<typeof setTimeout> | undefined;
+  // controls visibility for a single fade-out/fade-in cycle
+  roleVisible = true;
 
   // particles used by the template's *ngFor
   private _particles: { x: number; y: number; size: number; duration: number }[] = [];
@@ -20,8 +23,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   // simple stats example
   stats = [
     { label: 'Projekte', value: 12 },
-    { label: 'Erfahrung', value: '5 Jahre' },
-    { label: 'Kunden', value: 8 }
+    { label: 'Erfahrung', value: '3 Jahre' },
+    { label: 'Kunden', value: 3 }
   ];
 
   private router = inject(Router);
@@ -31,25 +34,40 @@ export class HomeComponent implements OnInit, OnDestroy {
     // rotate role every 3s so the template's currentRole() updates over time
     // Guard against server-side rendering where `window` is not available
     if (typeof window !== 'undefined' && typeof window.setInterval === 'function') {
+      // Controlled cycle: fade out -> change text -> fade in
       this.roleIntervalId = window.setInterval(() => {
-        this.currentRoleIndex = (this.currentRoleIndex + 1) % this.roles.length;
-      }, 3000) as unknown as number;
+        this.toggleRole();
+      }, 3000) as unknown as ReturnType<typeof setInterval>;
     }
   }
 
   ngOnDestroy(): void {
-    if (this.roleIntervalId) {
-      clearInterval(this.roleIntervalId);
+    if (this.roleIntervalId !== undefined) {
+      clearInterval(this.roleIntervalId as unknown as number);
+    }
+    if (this.roleChangeTimeout !== undefined) {
+      clearTimeout(this.roleChangeTimeout as unknown as number);
     }
   }
 
-  currentRole(): string {
+  // Expose as getter so template can bind to property (no repeated method calls)
+  get currentRole(): string {
     return this.roles[this.currentRoleIndex];
   }
 
-  // Called from template: *ngFor="let p of particles()"
-  particles() {
+  // Expose particles as getter for template access
+  get particles() {
     return this._particles;
+  }
+
+  private toggleRole() {
+    // start fade out
+    this.roleVisible = false;
+    // after fade-out duration, update index and fade in
+    this.roleChangeTimeout = setTimeout(() => {
+      this.currentRoleIndex = (this.currentRoleIndex + 1) % this.roles.length;
+      this.roleVisible = true;
+    }, 450); // matches CSS transition duration (450ms)
   }
 
   private generateParticles(count = 6) {
