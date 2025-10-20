@@ -1,7 +1,7 @@
 <!-- Floating Particles Background -->
 <div class="particles" aria-hidden="true">
-  <div 
-    *ngFor="let p of particles()" 
+  <div
+    *ngFor="let p of particles()"
     class="particle"
     [style.left.%]="p.x"
     [style.top.%]="p.y"
@@ -14,7 +14,7 @@
 <!-- Hero Section -->
 <section class="hero" id="main">
   <div class="hero__container">
-    
+
     <!-- Animated Gradient Orbs -->
     <div class="orbs" aria-hidden="true">
       <div class="orb orb--purple"></div>
@@ -24,7 +24,7 @@
 
     <!-- Main Content -->
     <div class="hero__content">
-      
+
       <!-- Greeting Badge -->
       <div class="badge">
         <span class="badge__dot"></span>
@@ -34,12 +34,12 @@
       <!-- Main Headline with Gradient -->
       <h1 class="hero__title">
         <span class="hero__title-line">Hi, ich bin</span>
-        <span class="hero__title-name gradient-text">Deniz Yavuzkaya</span>
+        <span class="hero__title-name, gradient-text">Deniz Yavuzkaya</span>
       </h1>
 
       <!-- Animated Role Text -->
       <div class="hero__role">
-        <span class="role-prefix">I'm a</span>
+        <span class="role-prefix">Ich bin</span>
         <span class="role-text" [attr.data-text]="currentRole()">
           {{ currentRole() }}
         </span>
@@ -59,7 +59,7 @@
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </a>
-        
+
         <a routerLink="/contact" class="btn btn--secondary">
           <span class="btn__text">Kontakt aufnehmen</span>
           <svg class="btn__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
