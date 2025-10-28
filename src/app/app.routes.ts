@@ -17,14 +17,14 @@ export const routes: Routes = [
     path: 'resume',
     loadComponent: () => import('./features/resume/resume.component').then((m) => m.ResumeComponent)
   },
-    {
-    path: 'resume',
-    loadComponent: () =>
-      import('./features/resume/resume.component').then(m => m.ResumeComponent)
+  {
+    path: 'play-lost-files',
+    loadComponent: () => import('./features/lazyLoading/play-lost-files/play-lost-files.component').then(m => m.PlayLostFilesComponent)
   },
   {
     path: 'contact',
     loadComponent: () => import('./features/contact/contact.component').then((m) => m.ContactComponent)
   },
+  { path: 'contact', loadComponent: () => import('./features/contact/contact.component').then(m => m.ContactComponent) },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

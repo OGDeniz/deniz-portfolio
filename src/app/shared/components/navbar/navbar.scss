@@ -1,4 +1,5 @@
 /* ===== Modern Navbar (glass, underline hover, hamburger→X) ===== */
+@import url('../../../../styles.scss');
 
 /* Design-Tokens (leicht anpassbar) */
 :root {
@@ -113,14 +114,14 @@
   padding: .45rem .6rem;
   border-radius: .6rem;
   outline: none;
-  transition: background .15s ease, color .15s ease;
+  transition: background .15s ease, color .15s ease; // smooth hover/focus transitions
 }
 
 /* Underline-Grow Effekt (modern, ohne JS) */
 .nav__links a::after {
   content: '';
   position: absolute; left: .6rem; right: .6rem; bottom: .28rem;
-  height: 2px; background: currentColor;
+  height: 2px; background: var(--clr-primary);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform .25s ease;
@@ -133,7 +134,7 @@
 .nav__links a:focus-visible { box-shadow: 0 0 0 3px rgba(0,0,0,.15); }
 .nav__links a.active {
   background: var(--link-active-bg);
-  color: var(--link-active-txt);
+  color: var(--clr-primary);
 }
 .nav__links a.active::after { display: none; }
 

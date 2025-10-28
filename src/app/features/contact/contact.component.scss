@@ -1,0 +1,105 @@
+.contact {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.contact h2 {
+  margin-bottom: .5rem;
+}
+
+.contact p {
+  margin-bottom: 1.5rem;
+  color: var(--muted);
+}
+
+.form-field {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field label {
+  margin-bottom: .3rem;
+  font-weight: 500;
+}
+
+.form-field input,
+.form-field textarea {
+  padding: .6rem .8rem;
+  font-size: 1rem;
+  border: 1px solid var(--bd);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--txt);
+  outline: none;
+  transition: border-color .2s;
+}
+
+.form-field input.invalid,
+.form-field textarea.invalid {
+  border-color: #e74c3c;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--link);
+}
+
+.form-field .error {
+  color: #e74c3c;
+  font-size: .875rem;
+  margin-top: .25rem;
+}
+
+.form-field.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: .5rem;
+}
+
+button {
+  display: inline-block;
+  padding: .75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--link);
+  color: var(--link-active-txt);
+  transition: background .3s;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background: var(--link-active-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  .form-field input,
+  .form-field textarea {
+    background: rgba(40,40,40,0.8);
+    border-color: #444;
+    color: #e6e6e6;
+  }
+  .form-field input:focus,
+  .form-field textarea:focus {
+    border-color: var(--link);
+  }
+  button {
+    background: var(--link-active-txt);
+    color: var(--link-active-bg);
+  }
+  button:hover:not(:disabled) {
+    background: var(--link-active-bg);
+    color: var(--link-active-txt);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

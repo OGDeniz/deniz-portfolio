@@ -1,22 +1,56 @@
+<div class="main-container">
 <section class="projects-page container">
   <h1>Projekte</h1>
   <div class="projects-grid">
-    @for (project of projects; track project.title) {
-      <article class="project-card">
-        <img class="project-image" [src]="project.image" [alt]="project.title" />
-        <div class="project-content">
-          <h2>{{ project.title }}</h2>
-          <p>{{ project.description }}</p>
-          <ul class="tech-list">
-            @for (tech of project.technologies; track tech) {
-              <li>{{ tech }}</li>
-            }
-          </ul>
-          @if (project.link) {
-            <a class="project-link" [href]="project.link" target="_blank" rel="noopener">Live ansehen</a>
-          }
+    <article class="project-card" *ngFor="let project of projects; trackBy: trackByTitle">
+      <img class="project-image" [src]="project.image" [alt]="project.title" />
+      <div class="project-content">
+        <h2>{{ project.title }}</h2>
+        <p>{{ project.description }}</p>
+        <ul class="tech-list">
+          <li *ngFor="let tech of project.technologies; trackBy: trackByIdentity">{{ tech }}</li>
+        </ul>
+        <div class="project-actions">
+          <a *ngIf="project.link" class="project-link" [href]="project.link" target="_blank" rel="noopener">Live ansehen</a>
+          <button *ngIf="project.play" class="btn-play" (click)="openGame(project)">Play</button>
         </div>
-      </article>
-    }
+      </div>
+    </article>
   </div>
 </section>
+<section class="game-embed">
+<h2>Lost Files – Play</h2>
+  <ng-container *ngIf="playingProject; else previewTpl">
+    <div class="embed-header">
+      <h3>{{ playingProject.title }}</h3>
+      <button class="btn-close" (click)="closeGame()">Schließen</button>
+    </div>
+    <div class="iframe-wrapper">
+      <ng-container *ngIf="!loadError; else errorTpl">
+        <iframe
+          [src]="trustedGameUrl"
+          title="{{ playingProject.title }}"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+          sandbox="allow-scripts allow-pointer-lock allow-same-origin"
+          (load)="onIframeLoad()"
+          (error)="loadError = true"
+        ></iframe>
+        <div class="overlay" *ngIf="loading">
+          <p>Lädt Spiel…</p>
+        </div>
+      </ng-container>
+      <ng-template #errorTpl>
+        <div class="iframe-error">
+          <p>Das Spiel konnte nicht geladen werden. <a href="#" (click)="openDirect($event)">Direkt öffnen</a></p>
+        </div>
+      </ng-template>
+    </div>
+  </ng-container>
+  <ng-template #previewTpl>
+    <p>Wähle ein Spiel und klicke auf "Play", um es hier zu starten.</p>
+  </ng-template>
+</section>
+</div>
+
+

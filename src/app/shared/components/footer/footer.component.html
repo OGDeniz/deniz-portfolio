@@ -1,0 +1,30 @@
+
+
+<!-- src/app/shared/footer/footer.component.html -->
+<footer class="footer">
+  <div class="footer-container">
+    <nav class="footer-nav">
+      <a
+        *ngFor="let link of navLinks; trackBy: trackByPath"
+        [routerLink]="link.path"
+        routerLinkActive="active"
+        >{{ link.label }}</a
+      >
+    </nav>
+
+    <div class="footer-social">
+      <a
+        *ngFor="let social of socialLinks"
+        [href]="social.url"
+        target="_blank"
+        rel="noopener"
+      >
+        <i class="{{ social.icon }}"></i>
+      </a>
+    </div>
+
+    <div class="footer-info">
+      &copy; {{ currentYear }} Deniz Yavuzkaya – alle Rechte vorbehalten.
+    </div>
+  </div>
+</footer>

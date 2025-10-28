@@ -1,87 +1,241 @@
-/* src/app/features/resume/resume.component.scss */
-:root {
-  --clr-primary: #2563eb; /* Blue-600 */
-  --clr-secondary: #d97706; /* Amber-600 */
+@import url('../../../styles.scss');
+/* === Timeline: Animation & Layout, ohne Farb-Overrides === */
+/* Timeline: Animation & Layout, farbneutral – Marker nur Kontur */
 
- --gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 50%, #ec4899 100%);
-  --gradient-glow: radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+/* Container */
 
+.resume-section {
+  margin: var(--space-lg) var(--space-lg);
+  padding: 0 var(--space-md);
+  margin-bottom: 10rem;
+}
+
+.resume-section .timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 0 5em auto;
+  padding: 0 0 1rem 0;
+  animation: tlReveal 2s ease 0s both;
 }
 
 
-.resume-page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: var(--space-lg);
-  color: var(--gradient-primary);
+/* Vertikale Linie – nutzt die aktuelle Textfarbe */
+.resume-section .timeline::before {
+  content: "";
+  position: absolute;
+  left: -0.25em;
+  top: 0;
+  bottom: 0;
+  border-left: 5px solid currentColor;
+  transform-origin: 0 0;
+  opacity: .35;
+  animation: tlScaleY 3s ease 1s both;
+}
 
-  .gradient-text {
+/* Abschluss-Punkt unten – unverändert (falls auch nur Kontur gewünscht: background: transparent;) */
+.resume-section .timeline::after {
+  content: "";
+  position: absolute;
+  left: -1em;
+  bottom: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: currentColor; /* <- ggf. auf transparent setzen, wenn ebenfalls nur Kontur */
+  border: 5px solid currentColor;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.1);
+  opacity: 1;
+  animation: tlDotIn 0.75s ease 2.82s both;
+}
 
-    text-align: center;
-    margin-bottom: var(--space-lg);
+/* Einzelnes Item */
+.resume-section .timeline > li {
+  position: relative;
+  margin: 0 0 3em 0;
+  padding: 0 2em 0 2em;
+  list-style: none;
+  --i: 1;
+}
 
+/* Marker je Item – NUR KONTUR, keine Füllung */
+.resume-section .timeline > li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -1.45em;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 5px solid currentColor; /* nur Kontur in aktueller Textfarbe */
+  box-shadow: 0 0 0 0 transparent; /* kein zusätzlicher Glow/Fülltrick */
+  animation: tlDotIn 0.75s ease calc(0.6s + var(--i) * 0.45s) both;
+}
+
+/* Content von links einblenden */
+.resume-section .timeline > li > .content {
+  animation: tlSlideInLeft 0.5s ease calc(0.8s + var(--i) * 0.45s) both;
+}
+
+/* period-Label bleibt farbneutral, nur Positionierung */
+.resume-section .timeline .period {
+  position: absolute;
+  left: -10.5em;
+  top: 0.1em;
+  min-width: 8.5em;
+  padding: .25em .6em;
+  border-radius: 999px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.08);
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* Sublisten */
+.resume-section .timeline .sub-list {
+  margin: .5rem 0 0 0;
+  padding-left: 1.25rem;
+}
+
+/* Staffel-Delays */
+.resume-section .timeline > li:nth-child(1) { --i: 1; }
+.resume-section .timeline > li:nth-child(2) { --i: 2; }
+.resume-section .timeline > li:nth-child(3) { --i: 3; }
+.resume-section .timeline > li:nth-child(4) { --i: 4; }
+.resume-section .timeline > li:nth-child(5) { --i: 5; }
+.resume-section .timeline > li:nth-child(6) { --i: 6; }
+.resume-section .timeline > li:nth-child(7) { --i: 7; }
+.resume-section .timeline > li:nth-child(8) { --i: 8; }
+.resume-section .timeline > li:nth-child(9) { --i: 9; }
+.resume-section .timeline > li:nth-child(10){ --i: 10; }
+
+/* Keyframes */
+@keyframes tlSlideInLeft {
+  0%   { transform: translateX(-1em); opacity: 0; }
+  100% { transform: translateX(0);    opacity: 1; }
+}
+@keyframes tlReveal {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes tlScaleY {
+  0%   { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+@keyframes tlDotIn {
+  0%   { opacity: 0; transform: scale(.5); }
+  50%  { opacity: 1; transform: scale(1.3); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .resume-section .timeline .period {
+    position: static;
+    display: inline-block;
+    margin-bottom: .35rem;
+    text-align: left;
+  }
+  .resume-section .timeline::before,
+  .resume-section .timeline::after {
+    left: 0.25em;
+  }
+  .resume-section .timeline > li {
+    padding-left: 2.25em;
+  }
+  .resume-section .timeline > li::before {
+    left: -0.35em;
+  }
+}
+
+
+/* =============================================
+   Scroll-gebundene Animationen (FadeIn beim Hinscrollen,
+   FadeOut beim Rausscrollen) – reine CSS-Lösung mit
+   View Timelines, plus Fallback auf die bisherigen
+   Load-Animations, wenn nicht unterstützt.
+   ============================================= */
+
+/* Keyframes für Scroll-Variante */
+@keyframes tlFadeInOut {
+  0%   { opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes tlSlideInLeftOut {
+  0%   { transform: translateX(-1em); }
+  25%  { transform: translateX(0); }
+  75%  { transform: translateX(0); }
+  100% { transform: translateX(-1em); }
+}
+@keyframes tlRingPopInOut {
+  0%   { transform: scale(.5); opacity: 0; }
+  20%  { transform: scale(1);   opacity: 1; }
+  80%  { transform: scale(1);   opacity: 1; }
+  100% { transform: scale(.5);  opacity: 0; }
+}
+
+/* Bevorzugte reduzierte Bewegung: alles statisch zeigen */
+@media (prefers-reduced-motion: reduce) {
+  .resume-section .timeline,
+  .resume-section .timeline::before,
+  .resume-section .timeline::after,
+  .resume-section .timeline > li::before,
+  .resume-section .timeline > li > .content {
+    animation: none !important;
+  }
+}
+
+/* ===== Enhanced Path: Browser mit View Timeline Support ===== */
+@supports (animation-timeline: auto) {
+  /* Vorhandene Load-Animationen deaktivieren */
+  .resume-section .timeline,
+  .resume-section .timeline::before,
+  .resume-section .timeline::after,
+  .resume-section .timeline > li::before,
+  .resume-section .timeline > li > .content {
+    animation: none;
   }
 
-  h2 {
-    margin-top: var(--space-lg);
-    margin-bottom: var(--space-md);
-    color: var(--clr-primary);
+  /* Jedes li erhält eine eigene View-Timeline entlang der Block-Achse */
+  .resume-section .timeline > li {
+    view-timeline-name: --tl-item;
+    view-timeline-axis: block; /* vertikales Scrollen */
   }
 
-  .info-list,
-  .simple-list,
-  .timeline {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  /* Content: FadeIn beim Eintritt, FadeOut beim Verlassen */
+  .resume-section .timeline > li > .content {
+    opacity: 0; /* Startzustand */
+    animation-name: tlFadeInOut, tlSlideInLeftOut;
+    animation-timeline: --tl-item, --tl-item;   /* an die Sichtbarkeit des li koppeln */
+    animation-duration: 1s, 1s;                 /* nur für Timing-Funktionen relevant */
+    animation-timing-function: linear, ease;     /* sanfte Bewegung */
+    animation-fill-mode: both;                   /* Zustand halten */
+    /* Sichtbarkeitsbereiche: wann die Animation beginnt/endet */
+    animation-range: entry 10% exit 90%, entry 10% exit 90%;
   }
 
-  .info-list li,
-  .simple-list li {
-    margin-bottom: 0.5rem;
-    color: var(--clr-text-muted);
+  /* Marker (nur Kontur): ebenfalls sichtbar/unsichtbar scroll-gebunden */
+  .resume-section .timeline > li::before {
+    animation-name: tlRingPopInOut;
+    animation-timeline: --tl-item;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+    animation-range: entry 10% exit 90%;
   }
 
-  .timeline {
-    border-left: 2px solid var(--clr-primary);
-    margin-left: 1rem;
-    padding-left: 1rem;
-
-    li {
-      position: relative;
-      margin-bottom: var(--space-md);
-
-      .period {
-        font-weight: 600;
-        color: var(--clr-primary);
-      }
-
-      .content {
-        margin-left: 0.5rem;
-      }
-
-      &::before {
-        content: '';
-        position: absolute;
-        left: -1.05rem;
-        top: 0.25rem;
-        width: 0.75rem;
-        height: 0.75rem;
-        background: var(--clr-primary);
-        border-radius: 50%;
-      }
-    }
+  /* Radierer-Segment hinter dem Marker: folgt dem gleichen Fade */
+  .resume-section .timeline > li::after {
+    opacity: 0;
+    animation-name: tlFadeInOut;
+    animation-timeline: --tl-item;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-range: entry 10% exit 90%;
   }
+}
 
-  .sub-list {
-    list-style: disc;
-    padding-left: 1.5rem;
-    margin-top: 0.25rem;
-
-    li {
-      margin-bottom: 0.25rem;
-      color: var(--clr-text-muted);
-      font-size: 0.875rem;
-    }
-  }
+/* ===== Legacy Path: kein View Timeline Support ===== */
+@supports not (animation-timeline: auto) {
+  /* Alles wie bisher – Initiale Load-Animationen bleiben aktiv */
 }

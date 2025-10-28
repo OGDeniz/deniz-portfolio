@@ -1,0 +1,43 @@
+<section class="contact">
+  <h2>Kontakt</h2>
+  <p>Ich freue mich über Ihre Nachricht. Bitte füllen Sie das Formular aus und ich melde mich zeitnah zurück.</p>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-field">
+      <label for="name">Name</label>
+      <input id="name" type="text" formControlName="name" [class.invalid]="submitted && c.name.invalid">
+      <div class="error" *ngIf="submitted && c.name.errors?.['required']">Name ist erforderlich.</div>
+    </div>
+
+    <div class="form-field">
+      <label for="email">E-Mail</label>
+      <input id="email" type="email" formControlName="email" [class.invalid]="submitted && c.email.invalid">
+      <div class="error" *ngIf="submitted && c.email.errors?.['required']">E-Mail ist erforderlich.</div>
+      <div class="error" *ngIf="submitted && c.email.errors?.['email']">Bitte geben Sie eine gültige E-Mail-Adresse ein.</div>
+    </div>
+
+    <div class="form-field">
+      <label for="subject">Betreff</label>
+      <input id="subject" type="text" formControlName="subject">
+    </div>
+
+    <div class="form-field">
+      <label for="message">Nachricht</label>
+      <textarea id="message" rows="6" formControlName="message" [class.invalid]="submitted && c.message.invalid"></textarea>
+      <div class="error" *ngIf="submitted && c.message.errors?.['required']">Nachricht ist erforderlich.</div>
+      <div class="error" *ngIf="submitted && c.message.errors?.['minlength']">
+        Nachricht muss mindestens {{ c.message.errors?.['minlength']?.['requiredLength'] }} Zeichen lang sein.
+      </div>
+    </div>
+
+    <div class="form-field checkbox">
+      <label>
+        <input type="checkbox" formControlName="privacy">
+        Ich habe die Datenschutzerklärung gelesen und akzeptiere sie.
+      </label>
+      <div class="error" *ngIf="submitted && c.privacy.invalid">Bitte akzeptieren Sie die Datenschutzerklärung.</div>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Nachricht senden</button>
+  </form>
+</section>

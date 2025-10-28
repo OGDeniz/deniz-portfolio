@@ -1,0 +1,24 @@
+<section class="play-lost-files container">
+  <h1>Lost Files — Spiel</h1>
+  <div class="iframe-wrapper">
+    <ng-container *ngIf="!loadError; else errorTpl">
+      <iframe
+        [src]="trustedGameUrl"
+        title="Lost Files"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+        sandbox="allow-scripts allow-pointer-lock allow-same-origin"
+        (load)="onIframeLoad()"
+        (error)="onIframeError()"
+      ></iframe>
+      <div class="overlay" *ngIf="loading">
+        <p>Lädt Spiel…</p>
+      </div>
+    </ng-container>
+    <ng-template #errorTpl>
+      <div class="iframe-error">
+  <p>Das Spiel konnte nicht geladen werden. Du kannst es direkt öffnen: <a href="/assets/games/lostFiles/index.html" (click)="openDirect($event)">Spiel öffnen</a></p>
+      </div>
+    </ng-template>
+  </div>
+</section>

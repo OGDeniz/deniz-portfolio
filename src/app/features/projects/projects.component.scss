@@ -1,3 +1,10 @@
+.main-container {
+  max-width: 1280px;
+  height: auto;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+
+
 .projects-page {
   padding: var(--space-lg) 0;
 
@@ -22,6 +29,8 @@
   display: flex;
   flex-direction: column;
   transition: transform var(--transition-base);
+  height: fit-content;
+
 
   &:hover {
     transform: translateY(-4px);
@@ -29,8 +38,9 @@
 
   .project-image {
     width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
+    max-height: 640px;
+    aspect-ratio: 16/10;
+    object-fit: contain;
   }
 
   .project-content {
@@ -73,5 +83,29 @@
         color: var(--clr-secondary);
       }
     }
+
+    .btn-play {
+      color: var(--clr-primary);
+      border: none;
+      font-weight: 600;
+      background: none;
+
+      &:hover {
+        color: var(--clr-secondary);
+      }
   }
 }
+
+}.game-embed iframe {
+width: 100%;
+max-width: 1280px; // je nach gewünschter Breite
+height: 100%;
+aspect-ratio: 16/9; // oder feste Höhe: height: 540px;
+border: 0;
+border-radius: 16px;
+box-shadow: 0 8px 28px rgba(0,0,0,.15);
+margin: 0 auto;
+
+}
+}
+
