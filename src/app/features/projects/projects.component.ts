@@ -72,13 +72,7 @@ export class ProjectsComponent {
       link: 'https://github.com/OGDeniz/Urlaubsapp/tree/main',
       linkLabel: 'GitHub ansehen',
     },
-    {
-      title: 'Web‑API Service',
-      description: 'Backend‑Service mit Node.js für Datenverarbeitung.',
-      technologies: ['Node.js', 'Express', 'MongoDB'],
-      image: '/projects/api-service.png',
-      // optional kein Link
-    },
+
   ];
 
   // Play state
