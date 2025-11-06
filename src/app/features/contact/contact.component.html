@@ -33,11 +33,13 @@
     <div class="form-field checkbox">
       <label>
         <input type="checkbox" formControlName="privacy">
-        Ich habe die Datenschutzerklärung gelesen und akzeptiere sie.
+        Ich habe die <a href="/privacy" target="_blank">Datenschutzerklärung</a> gelesen und akzeptiere sie.
       </label>
       <div class="error" *ngIf="submitted && c.privacy.invalid">Bitte akzeptieren Sie die Datenschutzerklärung.</div>
     </div>
 
-    <button type="submit" [disabled]="form.invalid">Nachricht senden</button>
+    <button type="submit" [disabled]="form.invalid || sending">
+      {{ sending ? 'Senden...' : 'Nachricht senden' }}
+    </button>
   </form>
 </section>

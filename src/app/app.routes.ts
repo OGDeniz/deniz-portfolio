@@ -25,6 +25,9 @@ export const routes: Routes = [
     path: 'contact',
     loadComponent: () => import('./features/contact/contact.component').then((m) => m.ContactComponent)
   },
-  { path: 'contact', loadComponent: () => import('./features/contact/contact.component').then(m => m.ContactComponent) },
+  {
+    path: 'privacy',
+    loadComponent: () => import('./features/privacy/privacy.component').then((m) => m.PrivacyComponent)
+  },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

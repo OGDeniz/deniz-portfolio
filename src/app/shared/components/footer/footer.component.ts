@@ -18,7 +18,8 @@ export class FooterComponent {
     { label: 'Skills', path: '/skills' },
     { label: 'Projekte', path: '/projects' },
     { label: 'Lebenslauf', path: '/resume' },
-    { label: 'Kontakt', path: '/contact' }
+    { label: 'Kontakt', path: '/contact' },
+    { label: 'Datenschutz', path: '/privacy' }
   ];
 
   socialLinks = [

@@ -3,16 +3,29 @@
   <h1 class="gradient-text">Lebenslauf</h1>
 
   <!-- Persönliche Daten -->
-  <section class="resume-section">
-    <h2>Persönliche Daten</h2>
-    <ul class="info-list">
-      <li><strong>Name:</strong> {{ personalInfo.name }}</li>
-      <li><strong>Geboren am:</strong> {{ personalInfo.birthDate }} in {{ personalInfo.birthPlace }}</li>
-      <li><strong>Familienstand:</strong> {{ personalInfo.familyStatus }}</li>
-      <li><strong>Adresse:</strong> {{ personalInfo.address }}</li>
-      <li><strong>E-Mail:</strong> <a [href]="'mailto:' + personalInfo.email">{{ personalInfo.email }}</a></li>
-      <li><strong>Telefon:</strong> <a [href]="'tel:' + personalInfo.phone">{{ personalInfo.phone }}</a></li>
-    </ul>
+  <section class="resume-section personal-info-section">
+    <div class="personal-info-content">
+      <div class="personal-info-text">
+        <h2>Persönliche Daten</h2>
+        <ul class="info-list">
+          <li><strong>Name:</strong> {{ personalInfo.name }}</li>
+          <li><strong>Geboren am:</strong> {{ personalInfo.birthDate }} in {{ personalInfo.birthPlace }}</li>
+          <li><strong>Familienstand:</strong> {{ personalInfo.familyStatus }}</li>
+          <li><strong>Adresse:</strong> {{ personalInfo.address }}</li>
+          <li><strong>E-Mail:</strong> <a [href]="'mailto:' + personalInfo.email">{{ personalInfo.email }}</a></li>
+          <li><strong>Telefon:</strong> <a [href]="'tel:' + personalInfo.phone">{{ personalInfo.phone }}</a></li>
+        </ul>
+        <div class="download-section">
+          <a href="/Abschlusszeugnis_SRH_GAME.pdf" download class="download-button">
+            <span class="download-icon">📄</span>
+            Abschlusszeugnis herunterladen
+          </a>
+        </div>
+      </div>
+      <div class="personal-info-photo">
+        <img src="/Bewerbungsfoto2.JPG" alt="Bewerbungsfoto" />
+      </div>
+    </div>
   </section>
 
   <!-- Schulbildung -->
