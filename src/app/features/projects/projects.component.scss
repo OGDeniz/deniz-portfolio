@@ -3,7 +3,7 @@
   height: auto;
   margin: 0 auto;
   padding: 0 var(--space-md);
-
+}
 
 .projects-page {
   padding: var(--space-lg) 0;
@@ -30,7 +30,6 @@
   flex-direction: column;
   transition: transform var(--transition-base);
   height: fit-content;
-
 
   &:hover {
     transform: translateY(-4px);
@@ -109,19 +108,106 @@
       &:hover {
         color: var(--clr-secondary);
       }
+    }
   }
 }
 
-}.game-embed iframe {
-width: 100%;
-max-width: 1280px; // je nach gewünschter Breite
-height: 100%;
-aspect-ratio: 16/9; // oder feste Höhe: height: 540px;
-border: 0;
-border-radius: 16px;
-box-shadow: 0 8px 28px rgba(0,0,0,.15);
-margin: 0 auto;
-
-}
+.game-embed iframe {
+  width: 100%;
+  max-width: 1280px;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+  margin: 0 auto;
 }
 
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .main-container {
+    padding: 0 var(--space-sm);
+  }
+
+  .projects-page {
+    padding: var(--space-md) 0;
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: var(--space-sm);
+    }
+  }
+
+  .projects-grid {
+    gap: var(--space-sm);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .project-card {
+    .project-images {
+      padding: var(--space-xs);
+    }
+
+    .project-image {
+      max-height: 300px;
+    }
+
+    &.has-multiple-images .project-image {
+      max-height: 250px;
+    }
+
+    .project-content {
+      padding: var(--space-xs);
+
+      h2 {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      .tech-list li {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.4rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .main-container {
+    padding: 0 var(--space-xs);
+  }
+
+  .projects-page {
+    padding: var(--space-sm) 0;
+
+    h1 {
+      font-size: 1.25rem;
+    }
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .project-card {
+    .project-image {
+      max-height: 200px;
+    }
+
+    &.has-multiple-images .project-image {
+      max-height: 180px;
+    }
+
+    .project-content h2 {
+      font-size: 0.95rem;
+    }
+  }
+
+  .game-embed iframe {
+    aspect-ratio: 4 / 3;
+  }
+}

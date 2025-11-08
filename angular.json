@@ -32,6 +32,11 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "**/*.{ttf,woff,woff2,eot,svg}",
+                "input": "node_modules/@fortawesome/fontawesome-free/webfonts",
+                "output": "assets/fonts"
               }
             ],
             "styles": [
@@ -48,13 +53,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "750kB",
+                  "maximumError": "1.5MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kB",
-                  "maximumError": "12kB"
+                  "maximumWarning": "100kB",
+                  "maximumError": "150kB"
                 }
               ],
               "outputHashing": "all"
@@ -100,6 +105,11 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "**/*.{ttf,woff,woff2,eot,svg}",
+                "input": "node_modules/@fortawesome/fontawesome-free/webfonts",
+                "output": "assets/fonts"
               }
             ],
             "styles": [

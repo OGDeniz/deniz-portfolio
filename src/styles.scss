@@ -1,3 +1,9 @@
+/* ===== FONT AWESOME ===== */
+$fa-font-path: '/assets/fonts';
+@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '@fortawesome/fontawesome-free/scss/solid.scss';
+@import '@fortawesome/fontawesome-free/scss/brands.scss';
+
 /* ===== GLOBAL STYLES ===== */
 
 /* CSS Variables for consistent theming */
@@ -11,7 +17,8 @@
   --clr-accent: #ec4899;
 
   /* Typography */
-  --font-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-base:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
 
   /* Spacing */
@@ -65,16 +72,29 @@ body {
 }
 
 /* ===== TYPOGRAPHY ===== */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: var(--space-sm);
 }
 
-h1 { font-size: clamp(2rem, 5vw, 4rem); }
-h2 { font-size: clamp(1.75rem, 4vw, 3rem); }
-h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
-h4 { font-size: clamp(1.25rem, 2vw, 1.75rem); }
+h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+h2 {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+}
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+h4 {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+}
 
 p {
   margin-bottom: var(--space-sm);

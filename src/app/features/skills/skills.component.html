@@ -1,49 +1,104 @@
 <section class="skills-page">
   <h1>Skills</h1>
+  <p class="skills-intro">Meine technischen und persönlichen Kompetenzen, die ich in Projekten einsetze:</p>
 
-  <!-- Technische Skills -->
-  <h2>Technische Fähigkeiten</h2>
-  <ul>
-    @for (skill of technicalSkills; track skill.name) {
-      <li class="skill-item">
-        <div class="skill-header">
-          <span class="skill-name">{{ skill.name }}</span>
-          <span class="skill-value">{{ skill.level }}%</span>
-        </div>
-        <div class="skill-bar">
-          <div
-            class="skill-progress"
-            [style.width.%]="skill.level"
-            role="progressbar"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            aria-valuenow="{{ skill.level }}"
-          ></div>
-        </div>
-      </li>
-    }
-  </ul>
+  <!-- Frontend Skills -->
+  <div class="skills-category">
+    <h2>Frontend Development</h2>
+    <ul>
+      @for (skill of frontendSkills; track skill.name) {
+        <li class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">{{ skill.name }}</span>
+            <span class="skill-value">{{ skill.level }}%</span>
+          </div>
+          <div class="skill-bar">
+            <div
+              class="skill-progress"
+              [style.width.%]="skill.level"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="{{ skill.level }}"
+            ></div>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <!-- Backend Skills -->
+  <div class="skills-category">
+    <h2>Backend Development</h2>
+    <ul>
+      @for (skill of backendSkills; track skill.name) {
+        <li class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">{{ skill.name }}</span>
+            <span class="skill-value">{{ skill.level }}%</span>
+          </div>
+          <div class="skill-bar">
+            <div
+              class="skill-progress"
+              [style.width.%]="skill.level"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="{{ skill.level }}"
+            ></div>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <!-- Tools & Technologien -->
+  <div class="skills-category">
+    <h2>Tools & Technologien</h2>
+    <ul>
+      @for (skill of toolsSkills; track skill.name) {
+        <li class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">{{ skill.name }}</span>
+            <span class="skill-value">{{ skill.level }}%</span>
+          </div>
+          <div class="skill-bar">
+            <div
+              class="skill-progress"
+              [style.width.%]="skill.level"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="{{ skill.level }}"
+            ></div>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
 
   <!-- Soft Skills -->
-  <h2>Soziale & Methodische Kompetenzen</h2>
-  <ul>
-    @for (skill of softSkills; track skill.name) {
-      <li class="skill-item">
-        <div class="skill-header">
-          <span class="skill-name">{{ skill.name }}</span>
-          <span class="skill-value">{{ skill.level }}%</span>
-        </div>
-        <div class="skill-bar">
-          <div
-            class="skill-progress"
-            [style.width.%]="skill.level"
-            role="progressbar"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            aria-valuenow="{{ skill.level }}"
-          ></div>
-        </div>
-      </li>
-    }
-  </ul>
+  <div class="skills-category">
+    <h2>Soft Skills & Kompetenzen</h2>
+    <ul>
+      @for (skill of softSkills; track skill.name) {
+        <li class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">{{ skill.name }}</span>
+            <span class="skill-value">{{ skill.level }}%</span>
+          </div>
+          <div class="skill-bar">
+            <div
+              class="skill-progress"
+              [style.width.%]="skill.level"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="{{ skill.level }}"
+            ></div>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
 </section>

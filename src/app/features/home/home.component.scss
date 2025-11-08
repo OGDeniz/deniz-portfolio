@@ -69,7 +69,8 @@
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) translateX(0) scale(1);
     opacity: 0;
   }
@@ -143,7 +144,8 @@
 }
 
 @keyframes orb-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
   }
   33% {
@@ -185,7 +187,8 @@
 }
 
 @keyframes badge-glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
   }
   50% {
@@ -194,7 +197,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
@@ -234,7 +238,8 @@
 }
 
 @keyframes gradient-shift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -261,7 +266,9 @@
 .role-text {
   position: relative;
   color: var(--clr-primary);
-  transition: opacity 450ms ease, transform 450ms ease;
+  transition:
+    opacity 450ms ease,
+    transform 450ms ease;
   opacity: 1;
   transform: translateY(0);
 }
@@ -280,7 +287,9 @@
   height: 2px;
   background: var(--gradient-primary);
   transform-origin: left center;
-  transition: transform 450ms ease, opacity 450ms ease;
+  transition:
+    transform 450ms ease,
+    opacity 450ms ease;
 }
 
 .role-text.hidden::after {
@@ -295,7 +304,6 @@
   font-size: clamp(1rem, 2vw, 1.25rem);
   line-height: 1.7;
   color: var(--clr-text-muted);
-
 }
 
 /* CTA Buttons */
@@ -403,6 +411,23 @@
   box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
 }
 
+.social-link i {
+  font-size: 1.5rem;
+}
+
+/* Personal Info Photo */
+.personal-info-photo {
+  margin: var(--space-md) 0;
+}
+
+.personal-info-photo img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
 /* Scroll Indicator */
 .scroll-indicator {
   position: absolute;
@@ -438,7 +463,8 @@
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -530,6 +556,19 @@
     gap: 0.25rem;
   }
 
+  .personal-info-photo {
+    margin: var(--space-sm) 0;
+  }
+
+  .personal-info-photo img {
+    width: 120px;
+    height: 160px;
+  }
+
+  .hero__description {
+    font-size: 1rem;
+  }
+
   .hero__cta {
     flex-direction: column;
     width: 100%;
@@ -540,12 +579,71 @@
     justify-content: center;
   }
 
+  .hero__social {
+    gap: 0.75rem;
+  }
+
+  .social-link {
+    width: 44px;
+    height: 44px;
+  }
+
   .orb {
     filter: blur(60px);
   }
 
   .stats__container {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .hero {
+    padding: var(--space-xs);
+  }
+
+  .hero__title {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+
+  .hero__title-line {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .personal-info-photo img {
+    width: 100px;
+    height: 140px;
+  }
+
+  .hero__description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .hero__role {
+    font-size: 1rem;
+    min-height: 2rem;
+  }
+
+  .stats__container {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .social-link i {
+    font-size: 1.25rem;
   }
 }
 

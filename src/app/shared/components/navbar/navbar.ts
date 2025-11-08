@@ -11,7 +11,7 @@ import { NgFor } from '@angular/common';
 })
 export class NavbarComponent {
   // ▶️ Diese Zeile fehlte:
-  readonly brand = 'Deniz Y.';         // oder was du anzeigen willst
+  readonly brand = 'Deniz Yavuzkaya';         // oder was du anzeigen willst
 
   menuOpen = signal(false);
 

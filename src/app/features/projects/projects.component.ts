@@ -61,6 +61,7 @@ export class ProjectsComponent {
       technologies: ['Angular 20', 'TypeScript', 'TailwindCSS', 'SSR'],
       image: '/projects/buero.png',
       link: 'https://buerokratiekompass.de/',
+      linkLabel: 'Webseite noch in Arbeit',
     },
     {
       title: 'Urlaubsapp - Android App',

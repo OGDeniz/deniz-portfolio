@@ -25,11 +25,15 @@ export class FooterComponent {
   socialLinks = [
     {
       icon: 'fa-brands fa-github',
-      url: 'https://github.com/DenizYavuzkaya' // passe die URL an
+      url: 'https://github.com/DenizYavuzkaya'
     },
     {
       icon: 'fa-brands fa-linkedin',
-      url: 'https://www.linkedin.com/in/deinprofil/' // passe die URL an
+      url: 'https://www.linkedin.com/in/deniz-yavuzkaya-217947282/'
+    },
+    {
+      icon: 'fa-brands fa-whatsapp',
+      url: 'https://wa.me/4917682155891'
     }
   ];
 

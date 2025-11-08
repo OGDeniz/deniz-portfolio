@@ -121,14 +121,15 @@ export class ResumeComponent {
   ];
 
   skills = [
-    'Visual Studio / JetBrains Rider',
+    'Visual Studio / JetBrains Rider / Android Studio',
     'Unity Engine',
-    'HTML, CSS/SCSS, JavaScript, TypeScript, C#, SQL und PHP',
+    'HTML, CSS/SCSS, JavaScript, TypeScript, C#, Kotlin, Java, SQL und PHP',
     '.NET Core / ASP.NET Core',
     'React, Angular, Vue.js',
     'Bootstrap, SCSS/SASS, Tailwind CSS',
     'Node.js, Next.js',
     'SQL (MS SQL Server, MySQL, MariaDB) & NoSQL (MongoDB)',
+    'Android Development (Kotlin/Java)',
     'Blender',
     'Adobe Photoshop, Illustrator, InDesign, Animate',
     'Microsoft Office (Word, Excel, PowerPoint, Project, Access)',
