@@ -11,6 +11,7 @@ interface Project {
   link?: string;
   linkLabel?: string;
   play?: boolean;
+  github?: string;
 }
 
 @Component({
@@ -28,6 +29,7 @@ export class ProjectsComponent {
       technologies: ['Angular', 'TypeScript', 'SCSS'],
       image: '/projects/portfolio.png',
       link: 'http://localhost:4200/',
+      github: 'https://github.com/OGDeniz/deniz-portfolio',
     },
     {
       title: '2D Game: Lost Files',
@@ -70,8 +72,7 @@ export class ProjectsComponent {
       technologies: ['Kotlin', 'Android', 'Java'],
       image: '/projects/UrlaubsApp1.jpg',
       images: ['/projects/UrlaubsApp1.jpg', '/projects/UrlaubsApp2.jpg'],
-      link: 'https://github.com/OGDeniz/Urlaubsapp/tree/main',
-      linkLabel: 'GitHub ansehen',
+      github: 'https://github.com/OGDeniz/Urlaubsapp/tree/main',
     },
 
   ];
