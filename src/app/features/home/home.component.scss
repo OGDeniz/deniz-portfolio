@@ -30,6 +30,22 @@
     --clr-text: #18181b;
     --clr-text-muted: #71717a;
   }
+
+  .btn--primary {
+    background: #8b5cf6 !important;
+    color: white !important;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.5) !important;
+    border: none !important;
+  }
+
+  .btn--primary:hover {
+    background: #7c3aed !important;
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.7) !important;
+  }
+
+  .btn--primary::before {
+    display: none !important;
+  }
 }
 
 /* ===== RESET & BASE ===== */
