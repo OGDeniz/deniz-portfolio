@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService, Theme } from '../../../services/theme.service';
 
@@ -57,13 +57,13 @@ import { ThemeService, Theme } from '../../../services/theme.service';
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 35px;
       padding: 0;
-      border: none;
+      border: 1.5px solid var(--clr-primary-20);
       border-radius: 8px;
-      background: transparent;
-      color: var(--clr-text);
+      background: var(--clr-primary-05);
+      color: var(--clr-primary);
       cursor: pointer;
       transition: all 0.3s ease;
       position: relative;
@@ -71,7 +71,8 @@ import { ThemeService, Theme } from '../../../services/theme.service';
 
       &:hover {
         background: var(--clr-primary-10);
-        color: var(--clr-primary);
+        border-color: var(--clr-primary);
+        box-shadow: 0 0 8px var(--clr-primary-20);
       }
 
       &:focus-visible {
@@ -113,8 +114,7 @@ import { ThemeService, Theme } from '../../../services/theme.service';
 })
 export class ThemeToggleComponent implements OnInit {
   currentTheme: Theme = 'system';
-
-  constructor(private themeService: ThemeService) {}
+  private themeService = inject(ThemeService);
 
   ngOnInit(): void {
     this.themeService.theme$.subscribe(theme => {

@@ -79,9 +79,53 @@ $fa-font-path: '/assets/fonts';
   --transition-slow: 0.3s ease;
 }
 
-/* Light Mode */
+/* Light Mode - based on data-theme attribute */
+html[data-theme="light"] {
+  /* Background Colors */
+  --clr-bg: #faf9f7;
+  --clr-bg-light: #ffffff;
+  --clr-bg-lighter: #f5f3f0;
+  --clr-bg-dark: #ede9e4;
+
+  /* Text Colors */
+  --clr-text-light: #2d2520;
+  --clr-text: #2d2520;
+  --clr-text-dark: #5a4f47;
+  --clr-text-muted: #8b7d75;
+
+  /* Primary - Lila */
+  --clr-primary: #7c5aa2;
+  --clr-primary-dark: #5a3d7a;
+  --clr-primary-light: #9b7fb5;
+  --clr-primary-05: rgba(124, 90, 162, 0.05);
+  --clr-primary-10: rgba(124, 90, 162, 0.1);
+  --clr-primary-20: rgba(124, 90, 162, 0.2);
+  --clr-primary-30: rgba(124, 90, 162, 0.3);
+
+  /* Secondary - Blau */
+  --clr-secondary: #2d5a96;
+  --clr-secondary-dark: #1f3f66;
+  --clr-secondary-light: #4a7ab5;
+  --clr-secondary-05: rgba(45, 90, 150, 0.05);
+  --clr-secondary-10: rgba(45, 90, 150, 0.1);
+  --clr-secondary-20: rgba(45, 90, 150, 0.2);
+
+  /* Accent - Rosa */
+  --clr-accent: #d63384;
+  --clr-accent-dark: #b02860;
+  --clr-accent-light: #e85a9f;
+  --clr-accent-05: rgba(214, 51, 132, 0.05);
+  --clr-accent-10: rgba(214, 51, 132, 0.1);
+  --clr-accent-20: rgba(214, 51, 132, 0.2);
+
+  /* Overlays */
+  --clr-overlay-dark: rgba(0, 0, 0, 0.08);
+  --clr-overlay-light: rgba(255, 255, 255, 0.5);
+}
+
+/* Light Mode - fallback for system preference (when no data-theme is set) */
 @media (prefers-color-scheme: light) {
-  :root {
+  html:not([data-theme]) {
     /* Background Colors */
     --clr-bg: #faf9f7;
     --clr-bg-light: #ffffff;
