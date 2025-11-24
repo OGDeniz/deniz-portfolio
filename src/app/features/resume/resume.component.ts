@@ -1,6 +1,7 @@
 
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ScrollAnimateDirective } from '../../shared/directives/scroll-animate.directive';
 
 interface Entry {
   period: string;
@@ -13,7 +14,7 @@ interface Entry {
 @Component({
   selector: 'app-resume',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ScrollAnimateDirective],
   templateUrl: './resume.component.html',
   styleUrl:'./resume.component.scss'
 

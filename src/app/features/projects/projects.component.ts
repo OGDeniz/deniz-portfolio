@@ -1,6 +1,7 @@
 import { Component, inject, signal, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ScrollAnimateDirective } from '../../shared/directives/scroll-animate.directive';
 
 interface Project {
   title: string;
@@ -18,7 +19,7 @@ interface Project {
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ScrollAnimateDirective],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
 })

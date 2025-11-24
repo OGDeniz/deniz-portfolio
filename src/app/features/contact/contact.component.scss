@@ -36,9 +36,25 @@
   transition: border-color 0.2s;
 }
 
+@media (prefers-color-scheme: light) {
+  .form-field input,
+  .form-field textarea {
+    background: var(--clr-bg-light);
+    border-color: var(--clr-bg-dark);
+    color: var(--clr-text);
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus {
+    border-color: var(--clr-primary);
+    background: var(--clr-bg-lighter);
+    box-shadow: 0 0 0 3px var(--clr-primary-05);
+  }
+}
+
 .form-field input.invalid,
 .form-field textarea.invalid {
-  border-color: #e74c3c;
+  border-color: var(--clr-error);
 }
 
 .form-field input:focus,

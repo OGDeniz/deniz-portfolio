@@ -1,3 +1,4 @@
+import { ScrollAnimateDirective } from '../../shared/directives/scroll-animate.directive';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
@@ -6,7 +7,7 @@ import emailjs from '@emailjs/browser';
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule, NgIf, ScrollAnimateDirective],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })

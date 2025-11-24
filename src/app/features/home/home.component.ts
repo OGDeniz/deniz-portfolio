@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ScrollAnimateDirective } from '../../shared/directives/scroll-animate.directive';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, ScrollAnimateDirective],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

@@ -6,8 +6,9 @@
     <a class="nav__brand" routerLink="/" aria-label="Startseite">{{ brand }}</a>
 
     <!-- Mobile Toggle -->
-    <button  class="nav__toggle" [class.open]="menuOpen()"
+    <button
       class="nav__toggle"
+      [class.open]="menuOpen()"
       type="button"
       aria-label="Menü umschalten"
       [attr.aria-expanded]="menuOpen()"
@@ -15,8 +16,6 @@
       (click)="toggle()">
       <span></span><span></span><span></span>
     </button>
-
-
 
     <!-- Primary Navigation -->
     <nav
@@ -28,12 +27,15 @@
 
       <a
         *ngFor="let it of items"
-        [routerLink]="['/', it.path]"
+        [routerLink]="[it.path]"
         [routerLinkActive]="'active'"
         [routerLinkActiveOptions]="{ exact: it.exact || false }"
         (click)="closeOnNavigate()">
         {{ it.label }}
       </a>
     </nav>
+
+    <!-- Theme Toggle -->
+    <app-theme-toggle></app-theme-toggle>
   </div>
 </header>

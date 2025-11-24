@@ -5,14 +5,14 @@
 :root {
   --nav-maxw: 1100px;
   --nav-pad: 0.75rem 1rem;
-  --bg: rgba(255, 255, 255, 0.72);
-  --bd: #eaeaea;
-  --txt: #111;
-  --muted: #666;
-  --link: #111;
-  --link-active-bg: #111;
+  --bg: rgba(250, 249, 247, 0.95);
+  --bd: #d4cdc5;
+  --txt: #2d2520;
+  --muted: #6b6560;
+  --link: #7c5aa2;
+  --link-active-bg: #7c5aa2;
   --link-active-txt: #fff;
-  --hover-bg: #f4f4f4;
+  --hover-bg: #f0ebe5;
 }
 
 @media (prefers-color-scheme: dark) {

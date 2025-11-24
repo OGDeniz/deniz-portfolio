@@ -1,8 +1,8 @@
 <div class="main-container">
-<section class="projects-page container">
+<section class="projects-page container" appScrollAnimate="projects">
   <h1>Projekte</h1>
   <div class="projects-grid">
-    <article class="project-card" *ngFor="let project of projects; trackBy: trackByTitle" [class.has-multiple-images]="project.images && project.images.length > 1" (click)="openProjectModal(project)" (keydown.enter)="openProjectModal(project)" (keydown.space)="$event.preventDefault(); openProjectModal(project)" role="button" tabindex="0">
+    <article class="project-card" [appScrollAnimate]="'project-' + i" *ngFor="let project of projects; let i = index; trackBy: trackByTitle" [class.has-multiple-images]="project.images && project.images.length > 1" (click)="openProjectModal(project)" (keydown.enter)="openProjectModal(project)" (keydown.space)="$event.preventDefault(); openProjectModal(project)" role="button" tabindex="0">
       <div class="project-images" *ngIf="project.images && project.images.length > 1; else singleImage">
         <img *ngFor="let img of project.images; trackBy: trackByIdentity" [src]="img" [alt]="project.title" class="project-image" />
       </div>

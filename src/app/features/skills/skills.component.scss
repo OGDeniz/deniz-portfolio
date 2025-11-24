@@ -1,3 +1,12 @@
+/* Category Color Definitions */
+:host {
+  --cat-1: var(--clr-primary);
+  --cat-2: var(--clr-secondary);
+  --cat-3: var(--clr-success);
+  --cat-4: var(--clr-warning);
+  --cat-5: var(--clr-accent);
+}
+
 .skills-page {
   max-width: 900px;
   margin: 0 auto;
@@ -69,57 +78,61 @@
   /* Category Color Schemes */
   .skills-category:nth-child(2) {
     h2 {
-      color: #60a5fa;
-      border-bottom-color: #60a5fa;
+      color: var(--cat-2);
+      border-bottom-color: var(--cat-2);
     }
 
     .skill-progress {
-      background: #60a5fa;
+      background: var(--cat-2);
+    }
+
+    .skill-bar {
+      background: var(--clr-secondary-10);
     }
   }
 
   .skills-category:nth-child(3) {
     h2 {
-      color: #34d399;
-      border-bottom-color: #34d399;
+      color: var(--cat-3);
+      border-bottom-color: var(--cat-3);
     }
 
     .skill-progress {
-      background: #34d399;
+      background: var(--cat-3);
     }
 
     .skill-bar {
-      background: color-mix(in srgb, #34d399 15%, transparent);
+      background: color-mix(in srgb, var(--cat-3) 15%, transparent);
     }
   }
 
   .skills-category:nth-child(4) {
     h2 {
-      color: #fbbf24;
-      border-bottom-color: #fbbf24;
+      color: var(--cat-4);
+      border-bottom-color: var(--cat-4);
     }
 
     .skill-progress {
-      background: #fbbf24;
+      background: var(--cat-4);
     }
 
     .skill-bar {
-      background: color-mix(in srgb, #fbbf24 15%, transparent);
+      background: color-mix(in srgb, var(--cat-4) 15%, transparent);
     }
   }
 
   .skills-category:nth-child(5) {
     h2 {
-      color: #f472b6;
-      border-bottom-color: #f472b6;
+      color: var(--cat-5);
+      border-bottom-color: var(--cat-5);
     }
 
     .skill-progress {
-      background: #f472b6;
+      background: var(--cat-5);
     }
 
     .skill-bar {
-      background: color-mix(in srgb, #f472b6 15%, transparent);
+      background: var(--clr-accent-10);
     }
   }
 }

@@ -12,7 +12,7 @@
 </div>
 
 <!-- Hero Section -->
-<section class="hero" id="main">
+<section class="hero" id="main" appScrollAnimate="home">
   <div class="hero__container">
 
     <!-- Animated Gradient Orbs -->
@@ -23,7 +23,7 @@
     </div>
 
     <!-- Main Content -->
-    <div class="hero__content">
+    <div class="hero__content" appScrollAnimate="home-content">
 
       <!-- Greeting Badge -->
       <div class="badge">
@@ -106,7 +106,7 @@
 </section>
 
 <!-- Stats Section -->
-<section class="stats">
+<section class="stats" appScrollAnimate="home-stats">
   <div class="stats__container">
     <div *ngFor="let stat of stats" class="stat-card">
       <div class="stat-card__value, gradient-text">{{ stat.value }}</div>

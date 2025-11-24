@@ -1,3 +1,4 @@
+import { ScrollAnimateDirective } from '../../shared/directives/scroll-animate.directive';
 import { Component } from '@angular/core';
 
 @Component({

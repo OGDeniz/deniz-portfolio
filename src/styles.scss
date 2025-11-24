@@ -8,13 +8,53 @@ $fa-font-path: '/assets/fonts';
 
 /* CSS Variables for consistent theming */
 :root {
-  /* Colors */
-  --clr-bg: #0a0a0f;
-  --clr-text: #e4e4e7;
-  --clr-text-muted: #a1a1aa;
-  --clr-primary: #8b5cf6;
-  --clr-secondary: #3b82f6;
-  --clr-accent: #ec4899;
+  /* ===== DARK MODE (Default) ===== */
+  /* Background Colors */
+  --clr-bg-dark: #0E0F11;
+  --clr-bg: #131416;
+  --clr-bg-light: #1C1E21;
+  --clr-bg-lighter: #262A2F;
+
+  /* Text Colors */
+  --clr-text-light: #F5F7FA;
+  --clr-text: #D3D7DE;
+  --clr-text-dark: #9AA0A8;
+  --clr-text-muted: #6F757B;
+
+  /* Primary - Cyan */
+  --clr-primary: #00C2D1;
+  --clr-primary-dark: #00939E;
+  --clr-primary-light: #00E5F6;
+  --clr-primary-05: rgba(0, 194, 209, 0.05);
+  --clr-primary-10: rgba(0, 194, 209, 0.1);
+  --clr-primary-20: rgba(0, 194, 209, 0.2);
+  --clr-primary-30: rgba(0, 194, 209, 0.3);
+
+  /* Secondary - Orange */
+  --clr-secondary: #FF8A3D;
+  --clr-secondary-dark: #CC6D2F;
+  --clr-secondary-light: #FFB280;
+  --clr-secondary-05: rgba(255, 138, 61, 0.05);
+  --clr-secondary-10: rgba(255, 138, 61, 0.1);
+  --clr-secondary-20: rgba(255, 138, 61, 0.2);
+
+  /* Accent - Purple */
+  --clr-accent: #8F5BFF;
+  --clr-accent-dark: #693FCC;
+  --clr-accent-light: #B89CFF;
+  --clr-accent-05: rgba(143, 91, 255, 0.05);
+  --clr-accent-10: rgba(143, 91, 255, 0.1);
+  --clr-accent-20: rgba(143, 91, 255, 0.2);
+
+  /* Status Colors */
+  --clr-success: #10b981;
+  --clr-warning: #f59e0b;
+  --clr-error: #ef4444;
+  --clr-info: #3b82f6;
+
+  /* Neutral overlays */
+  --clr-overlay-dark: rgba(0, 0, 0, 0.3);
+  --clr-overlay-light: rgba(255, 255, 255, 0.05);
 
   /* Typography */
   --font-base:
@@ -42,9 +82,46 @@ $fa-font-path: '/assets/fonts';
 /* Light Mode */
 @media (prefers-color-scheme: light) {
   :root {
-    --clr-bg: #ffffff;
-    --clr-text: #18181b;
-    --clr-text-muted: #71717a;
+    /* Background Colors */
+    --clr-bg: #faf9f7;
+    --clr-bg-light: #ffffff;
+    --clr-bg-lighter: #f5f3f0;
+    --clr-bg-dark: #ede9e4;
+
+    /* Text Colors */
+    --clr-text-light: #2d2520;
+    --clr-text: #2d2520;
+    --clr-text-dark: #5a4f47;
+    --clr-text-muted: #8b7d75;
+
+    /* Primary - Lila */
+    --clr-primary: #7c5aa2;
+    --clr-primary-dark: #5a3d7a;
+    --clr-primary-light: #9b7fb5;
+    --clr-primary-05: rgba(124, 90, 162, 0.05);
+    --clr-primary-10: rgba(124, 90, 162, 0.1);
+    --clr-primary-20: rgba(124, 90, 162, 0.2);
+    --clr-primary-30: rgba(124, 90, 162, 0.3);
+
+    /* Secondary - Blau */
+    --clr-secondary: #2d5a96;
+    --clr-secondary-dark: #1f3f66;
+    --clr-secondary-light: #4a7ab5;
+    --clr-secondary-05: rgba(45, 90, 150, 0.05);
+    --clr-secondary-10: rgba(45, 90, 150, 0.1);
+    --clr-secondary-20: rgba(45, 90, 150, 0.2);
+
+    /* Accent - Rosa */
+    --clr-accent: #d63384;
+    --clr-accent-dark: #b02860;
+    --clr-accent-light: #e85a9f;
+    --clr-accent-05: rgba(214, 51, 132, 0.05);
+    --clr-accent-10: rgba(214, 51, 132, 0.1);
+    --clr-accent-20: rgba(214, 51, 132, 0.2);
+
+    /* Overlays */
+    --clr-overlay-dark: rgba(0, 0, 0, 0.08);
+    --clr-overlay-light: rgba(255, 255, 255, 0.5);
   }
 }
 
@@ -118,7 +195,7 @@ a:hover {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 50%, #ec4899 100%);
+  background: linear-gradient(135deg, var(--clr-accent) 0%, var(--clr-primary) 50%, var(--clr-secondary) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -183,4 +260,64 @@ a:hover {
 ::-moz-selection {
   background: var(--clr-primary);
   color: white;
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.scroll-animate-in {
+  animation: fadeInUp 0.6s ease-out forwards !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-animate-in,
+  [appScrollAnimate] {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

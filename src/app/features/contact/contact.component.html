@@ -1,8 +1,8 @@
-<section class="contact">
+<section class="contact" appScrollAnimate="contact">
   <h2>Kontakt</h2>
   <p>Ich freue mich über Ihre Nachricht. Bitte füllen Sie das Formular aus und ich melde mich zeitnah zurück.</p>
 
-  <form [formGroup]="form" (ngSubmit)="submit()">
+  <form [formGroup]="form" (ngSubmit)="submit()" appScrollAnimate="contact-form">
     <div class="form-field">
       <label for="name">Name</label>
       <input id="name" type="text" formControlName="name" [class.invalid]="submitted && c.name.invalid">
@@ -23,7 +23,7 @@
 
     <div class="form-field">
       <label for="message">Nachricht</label>
-      <textarea id="message" rows="6" formControlName="message" [class.invalid]="submitted && c.message.invalid"></textarea>
+      <textarea id="message" rows="6" formControlName="message" [class.invalid]="submitted && c.message.invalid" placeholder="Geben Sie hier mind. 20 Zeichen ein"></textarea>
       <div class="error" *ngIf="submitted && c.message.errors?.['required']">Nachricht ist erforderlich.</div>
       <div class="error" *ngIf="submitted && c.message.errors?.['minlength']">
         Nachricht muss mindestens {{ c.message.errors?.['minlength']?.['requiredLength'] }} Zeichen lang sein.
