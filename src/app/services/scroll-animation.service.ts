@@ -70,7 +70,7 @@ export class ScrollAnimationService {
         let newActiveSection: string | null = null;
 
         entries.forEach(entry => {
-          const sectionId = (entry.target as HTMLElement).id;
+          const sectionId = (entry.target as HTMLElement).getAttribute('data-scroll-id') || (entry.target as HTMLElement).id;
 
           if (entry.isIntersecting) {
             const section = this.sections.get(sectionId);

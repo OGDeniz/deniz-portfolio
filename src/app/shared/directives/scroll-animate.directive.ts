@@ -24,6 +24,9 @@ export class ScrollAnimateDirective implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (this.sectionId) {
+      // Setze die ID als HTML-Attribut für IntersectionObserver
+      this.el.nativeElement.setAttribute('data-scroll-id', this.sectionId);
+
       // Registriere die Section beim Service
       this.scrollAnimationService.registerSection(this.sectionId, this.el.nativeElement);
 
