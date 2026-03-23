@@ -1,12 +1,20 @@
-import { Component, inject, signal, HostListener } from '@angular/core';
+import { Component, HostListener, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ScrollAnimateDirective } from '../../shared/directives/scroll-animate.directive';
 
+type ProjectCategory = 'Web' | 'App' | 'Game' | 'Portfolio';
+
 interface Project {
   title: string;
+  category: ProjectCategory;
+  featured: boolean;
+  summary: string;
   description: string;
   technicalDescription?: string;
+  impact?: string;
+  role?: string;
+  focus?: string;
   technologies?: string[];
   image: string;
   images?: string[];
@@ -24,100 +32,201 @@ interface Project {
   styleUrls: ['./projects.component.scss'],
 })
 export class ProjectsComponent {
+  private sanitizer = inject(DomSanitizer);
+
+  readonly introTags = [
+    'Frontend',
+    'Fullstack',
+    'Angular',
+    'React',
+    'Next.js',
+    'TypeScript',
+    'C# / .NET',
+    'UX',
+  ];
+
   projects: Project[] = [
+      {
+    title: 'KAOS Media',
+    category: 'Web',
+    featured: true,
+    summary:
+      'Co-Founder einer Kreativagentur für digitales Marketing mit Fokus auf Branding, Webentwicklung und Performance.',
+    description:
+      'Als Co-Founder von KAOS Media verantworte ich die Konzeption, Entwicklung und technische Umsetzung digitaler Lösungen mit Fokus auf conversion-orientierte Websites und skalierbare Frontend-Architektur.',
+    technicalDescription:
+      'Aufbau einer modularen, performanten Website mit Fokus auf UX, klare Informationsarchitektur und SEO-nahe Struktur. Einsatz moderner Frontend-Technologien sowie Motion-Design zur Verbesserung der Nutzerführung und Conversion.',
+    impact: 'Agenturaufbau · Branding · UX · Conversion',
+    role: 'Co-Founder · Frontend Architect · UX/UI Engineer',
+    focus:
+      'Frontend-Architektur, UX-Struktur, Performance, SEO und technische Umsetzung von Marketing-Systemen',
+    technologies: [
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Tailwind CSS',
+      'Framer Motion',
+      'SEO',
+      'UX/UI Design',
+      'Performance Optimization'
+    ],
+    image: '/projects/kaos.png',
+    link: 'https://kaosmedia.de/',
+    linkLabel: 'Zur Website'
+  },
     {
-      title: 'Portfolio Website',
-      description: 'Meine eigene Portfolio-Website mit Angular, die Sie gerade aufbauen.',
-      technicalDescription:
-        'Entwickelt als moderne Single-Page-Application (SPA) mit Angular 19 und TypeScript. Features umfassen responsive Design mit SCSS, dynamische Projektgalerie mit Modal-Dialoge, Kontaktformular mit Validierung, und Spielintegration über iFrame-Sandboxing. Implementiert Signal-basiertes State-Management für optimale Change Detection, TrackBy-Funktionen für Performance bei großen Listen, und Angular Standalone Components für modulare Architektur.',
-      technologies: ['Angular', 'TypeScript', 'SCSS'],
-      image: '/projects/portfolio.png',
-      link: 'http://localhost:4200/',
-      github: 'https://github.com/OGDeniz/deniz-portfolio',
-    },
-    {
-      title: '2D Game: Lost Files',
+      title: 'RP Schließtechnik',
+      category: 'Web',
+      featured: true,
+      summary:
+        'Conversion-orientierte Business-Website für einen Schlüsseldienst mit lokalem SEO-Fokus und klarer Nutzerführung.',
       description:
-        'Programmierer reist durchs All, meistert Genres, rettet legendäres, geheimnisvolles Spiel.',
+        'Moderne Business-Website für einen Schlüsseldienst mit Fokus auf Vertrauen, schnelle Kontaktaufnahme und lokale Auffindbarkeit.',
       technicalDescription:
-        'Browserbasierten 2D-Adventure entwickelt mit reinem HTML5 Canvas und JavaScript. Game-Mechaniken umfassen Platformer-Physik mit Schwerkraft, Sprung-Mechaniken und Kollisionserkennung. Verschiedene Spielmodi demonstrieren Genre-Vielfalt (Action, Puzzle, Adventure). Implementiert Game Loop mit RequestAnimationFrame für 60 FPS, Entity-Component-Systeme für Verwaltung von Game Objects, und Canvas-2D Context für Rendering und Animationen.',
-      technologies: ['HTML5', 'JavaScript'],
-      image: '/projects/lostFiles.png',
-      play: true,
-    },
-    {
-      title: 'Spectral Lounge Chaos - VR Game',
-      description:
-        'Immersives VR-Laser-Tag-Spiel im virtuellen Zirkus mit Unity. Grobkonzept der Abschlussarbeit 2024.',
-      technicalDescription:
-        'VR-Spielkonzept für Meta Quest entwickelt mit Unity 3D und C#. Implementiert Hand-Tracking für intuitive Kontrolle von Laser-Pistolen, räumliches Audio für immersives Gameplay, und Multiplayer-Synchronisierung. Assets wurden in Blender 3D modelliert und texturiert. Features umfassen Physics-Engine für realistische Interaktionen, Event-System für Spielmechaniken, und Optimierungen für Mobile VR-Performance. Grobkonzept dokumentiert Gameplay-Loops, technische Architektur und Hardware-Anforderungen.',
-      technologies: ['Unity', 'C#', 'Meta Quest', 'Blender 3D'],
-      image: '/projects/GameCover02.png',
-      link: '/projects/GrobKonzept_Abschlussarbeit.pdf',
-      linkLabel: 'Konzept ansehen',
-    },
-    {
-      title: 'RP Schließtechnik - Business Website',
-      description:
-        '24/7 Schlüsseldienst & Sicherheitslösungen Website. Responsive Design mit Service-Showcase, Kontaktformular und Notfall-Hotline.',
-      technicalDescription:
-        'Full-Stack Web-Anwendung mit Next.js, React und TypeScript für optimale SEO und Performance. Implementiert App Router für serverseitiges Rendering (SSR) und statische Generierung, wodurch beste Platzierungen bei Google für lokale Suchanfragen erreicht werden. Tailwind CSS für responsive Design und schnelle Entwicklung. JSON-LD structured data für bessere Search Engine Integration. Kontaktformular mit Email-Integration, optimierte Bilder mit Next.js Image Component. Mobile-first Ansatz mit 98+ Lighthouse Score.',
-      technologies: ['React', 'Next.js', 'Tailwind CSS', 'JSON-LD'],
+        'Umgesetzt als performante Next.js-Anwendung mit React und TypeScript. Der Fokus lag auf sauberer Informationsarchitektur, Mobile-First-Umsetzung, Local SEO und technischen Grundlagen für gute Sichtbarkeit. JSON-LD wurde für strukturierte Daten eingebunden, Bilder und Inhalte wurden für schnelle Ladezeiten optimiert. Zusätzlich wurde auf Conversion-nahe Kontaktpunkte wie Hotline, Call-to-Actions und vertrauensbildende Inhalte geachtet.',
+      impact: 'Local SEO, Performance, Conversion',
+      role: 'Konzeption, Frontend-Umsetzung, Struktur, UX und technische Optimierung',
+      focus: 'Next.js, SEO, responsive Design, Conversion-orientierte Inhalte',
+      technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'JSON-LD'],
       image: '/projects/schluessel.png',
       link: 'https://www.schluesselrp.de/',
       linkLabel: 'Zur Website',
     },
     {
-      title: 'BürokratieKompass - Service Website',
+      title: 'BürokratieKompass',
+      category: 'Web',
+      featured: true,
+      summary:
+        'Angular-SSR-Plattform mit modularer Struktur, serviceorientierter UX und klarer Inhaltsarchitektur.',
       description:
-        'Angular 20 SSR-Website für Bürokratie-Dienstleistungen (Pflege, Eltern, PKV). Modern responsive Design mit TailwindCSS und Standalone Components.',
+        'Service-Website für Bürokratie-Dienstleistungen mit Fokus auf Struktur, Vertrauen, schnelle Orientierung und moderne technische Basis.',
       technicalDescription:
-        'Moderne Web-Anwendung mit Angular 20 im Standalone-Komponentenmodell und TypeScript. Implementiert serverseitiges Rendering (SSR) mit Angular Universal für höhere Ladegeschwindigkeit und SEO-Optimierung. TailwindCSS für responsive Grid-Layouts und utility-first Styling. Signal-API für reaktive State-Management, RxJS Observables für asynchrone Datenflüsse. Modular strukturiert mit Feature-Module für verschiedene Dienst-Bereiche (Pflege, Eltern, PKV). Server-Side Validation und sicherer Datenhandling für sensible Informationen.',
-      technologies: ['Angular 20', 'TypeScript', 'TailwindCSS', 'SSR'],
+        'Die Anwendung wurde mit Angular 20, TypeScript und SSR aufgebaut. Ziel war eine saubere, modulare Architektur mit eigenständigen Bereichen für verschiedene Leistungen. Durch serverseitiges Rendering wurde die technische Basis für bessere Ladezeiten und SEO geschaffen. Zusätzlich lag der Fokus auf klarer Nutzerführung, wiederverwendbaren Komponenten und einer skalierbaren Projektstruktur.',
+      impact: 'SSR, modulare Architektur, bessere Struktur für komplexe Inhalte',
+      role: 'Frontend-Architektur, Komponentenstruktur, UX-Ausrichtung und technische Umsetzung',
+      focus: 'Angular SSR, modulare Seitenstruktur, TailwindCSS, Performance',
+      technologies: ['Angular 20', 'TypeScript', 'SSR', 'TailwindCSS'],
       image: '/projects/buero.png',
       link: 'https://buerokratiekompass.de/',
-      linkLabel: 'Webseite noch in Arbeit',
+      linkLabel: 'Projekt ansehen',
     },
     {
-      title: 'Ostepathie Praxis Website',
+      title: 'Osteopathie Praxis Website',
+      category: 'Web',
+      featured: true,
+      summary:
+        'Moderne Praxis-Website mit React, klarer Informationsstruktur und ruhiger, vertrauenswürdiger UX.',
       description:
-        'Eine moderne, responsive Website für eine Osteopathie-Praxis, entwickelt mit React, TypeScript und Vite. Die Single-Page-Application bietet Besuchern umfassende Informationen über die Praxis und ermöglicht einfache Kontaktaufnahme.',
+        'Responsive Website für eine Osteopathie-Praxis mit Fokus auf Seriosität, Übersichtlichkeit und einfacher Kontaktaufnahme.',
       technicalDescription:
-        'React-basierte Single-Page-Application mit TypeScript und Vite für blitzschnelle Entwicklung und Build-Zeiten. Moderne Component-Architektur mit Hooks (useState, useEffect, useContext) für State-Management. CSS mit BEM-Methodologie für wartbare und skalierbare Stylesheets. Lazy Loading für Bilder und Code-Splitting für optimierte Performance. Responsive Design mit CSS Media Queries für alle Bildschirmgrößen. Implementiert Contact-Form mit Validierung und Email-Integration. SEO-optimiert mit Meta-Tags und structured data für lokale Suchergebnisse.',
+        'Die Website wurde als React-SPA mit TypeScript und Vite umgesetzt. Wichtig waren eine klare Seitenstruktur, ein ruhiges visuelles Erscheinungsbild, responsive Layouts und eine wartbare Komponentenarchitektur. Der Fokus lag auf Performance, sauberem Frontend und einer UX, die Nutzer schnell zu den relevanten Informationen und Kontaktmöglichkeiten führt.',
+      impact: 'Responsive UX, klare Nutzerführung, moderne Praxispräsentation',
+      role: 'Frontend-Entwicklung, Struktur, responsive Design und technische Umsetzung',
+      focus: 'React, TypeScript, Vite, komponentenbasierte Umsetzung',
       technologies: ['React', 'TypeScript', 'Vite', 'CSS'],
       image: '/projects/osteopathie.png',
       link: 'https://osteopathie-weichselfelder.de/',
       linkLabel: 'Zur Website',
     },
     {
-      title: 'Urlaubsapp - Android App',
+      title: 'Portfolio Website',
+      category: 'Portfolio',
+      featured: true,
+      summary:
+        'Mein eigenes Developer-Portfolio mit Fokus auf modernes UI, klare Positionierung und performante Angular-Struktur.',
       description:
-        'Intuitive Android-App zur Urlaubsverwaltung und Reiseplanung. Ermöglicht benutzerfreundliche Verwaltung einer Packliste und einem Countdown. Entwickelt mit modernem Kotlin/Java für nahtloses mobiles Erlebnis mit ansprechendem User Interface.',
+        'Persönliche Portfolio-Website zur Präsentation meiner Projekte, Skills und Arbeitsweise mit klarem Fokus auf Arbeitgeber-Relevanz.',
       technicalDescription:
-        'Native Android-App entwickelt mit Kotlin und Java, implementiert mit Android Architecture Components (ViewModel, LiveData, Room Database). Features umfassen lokale Persistierung von Reisedaten in SQLite, Countdown-Timer mit Notifications, Packlisten mit Checkboxen und Kategorisierung. Nutzt Material Design 3 für modernes UI/UX. Fragment-basierte Navigation mit Navigation Component. Läuft auf Android 8.0+ mit Unterstützung für verschiedene Bildschirmgrößen. Repository-Pattern für saubere Architektur und Dependency Injection mit Hilt. Offline-First Ansatz mit lokaler Datenspeicherung.',
+        'Das Portfolio wurde als moderne Angular-Anwendung aufgebaut und in den letzten Iterationen gezielt auf stärkere Positionierung, bessere UI/UX und saubere Komponentenstruktur optimiert. Dazu gehören modulare Seiten, Performance-orientierte Rendering-Strategien, klare Projektpräsentation per Modal und eine visuelle Sprache, die mehr in Richtung hochwertiges Produktportfolio statt klassischer Bewerbungsseite geht.',
+      impact: 'Stärkere Positionierung, bessere Arbeitgeber-Kommunikation, moderne UX',
+      role: 'Konzept, UI/UX, Frontend-Entwicklung und inhaltliche Ausrichtung',
+      focus: 'Angular, TypeScript, SCSS, Component Architecture',
+      technologies: ['Angular', 'TypeScript', 'SCSS'],
+      image: '/projects/portfolio.png',
+      github: 'https://github.com/OGDeniz/deniz-portfolio',
+    },
+    {
+      title: 'Urlaubsapp',
+      category: 'App',
+      featured: false,
+      summary:
+        'Native Android-App zur Reiseplanung mit Countdown, Packliste und lokaler Datenspeicherung.',
+      description:
+        'Mobile App zur Urlaubsplanung mit Fokus auf praktischer Nutzung, strukturierter Datenhaltung und mobilem UI.',
+      technicalDescription:
+        'Die App wurde nativ für Android mit Kotlin und Java entwickelt. Sie nutzt Android Architecture Components, lokale Datenspeicherung und eine klare Trennung der Zuständigkeiten. Im Fokus standen eine nutzerfreundliche Oberfläche, Offline-Fähigkeit, Countdown-Logik und die Verwaltung von Packlisten. Die technische Umsetzung orientierte sich an sauberer Architektur und alltagstauglicher Funktionalität.',
+      impact: 'Mobile UX, lokale Persistenz, saubere App-Struktur',
+      role: 'Konzeption, Entwicklung und technische Struktur der App',
+      focus: 'Android, lokale Daten, mobile Interaktionen',
       technologies: ['Kotlin', 'Android', 'Java'],
       image: '/projects/UrlaubsApp1.jpg',
       images: ['/projects/UrlaubsApp1.jpg', '/projects/UrlaubsApp2.jpg'],
       github: 'https://github.com/OGDeniz/Urlaubsapp/tree/main',
     },
+    {
+      title: 'Lost Files',
+      category: 'Game',
+      featured: false,
+      summary:
+        'Browserbasiertes 2D-Game mit Canvas, Genre-Wechseln und klassischer Game-Loop-Logik.',
+      description:
+        '2D-Adventure mit spielerischem Fokus auf Mechaniken, Genre-Vielfalt und technischer Umsetzung im Browser.',
+      technicalDescription:
+        'Das Spiel wurde mit HTML5 Canvas und JavaScript entwickelt. Zentrale Themen waren Game Loop, Kollisionserkennung, Bewegungslogik, Rendering und unterschiedliche Gameplay-Elemente. Das Projekt zeigt meine Fähigkeit, auch interaktive Systeme jenseits klassischer Webseiten zu denken und umzusetzen.',
+      impact: 'Interaktive Logik, Canvas-Rendering, spielerische Systementwicklung',
+      role: 'Game-Konzept, Programmierung und technische Umsetzung',
+      focus: 'HTML5 Canvas, JavaScript, Gameplay-Mechaniken',
+      technologies: ['HTML5', 'JavaScript', 'Canvas'],
+      image: '/projects/lostFiles.png',
+      play: true,
+    },
+    {
+      title: 'Spectral Lounge Chaos',
+      category: 'Game',
+      featured: false,
+      summary:
+        'VR-Spielkonzept für Meta Quest mit Unity, Blender-Assets und immersivem Gameplay-Fokus.',
+      description:
+        'Grobkonzept für ein VR-Laser-Tag-Spiel im virtuellen Zirkus als Abschlussarbeitsprojekt.',
+      technicalDescription:
+        'Das Projekt wurde als VR-Konzept mit Unity und C# geplant. Im Fokus standen Interaktion, Immersion, Hand-Tracking, räumliches Audio und Performance-Anforderungen für Mobile VR. Assets wurden in Blender vorbereitet. Auch wenn der Schwerpunkt konzeptionell war, zeigt das Projekt meine Fähigkeit, komplexe technische Systeme zu strukturieren und spielerisch zu denken.',
+      impact: 'VR-Konzeption, technische Planung, 3D- und Gameplay-Denken',
+      role: 'Konzept, technische Planung, 3D- und Gameplay-Ausarbeitung',
+      focus: 'Unity, C#, VR, Blender',
+      technologies: ['Unity', 'C#', 'Meta Quest', 'Blender 3D'],
+      image: '/projects/GameCover02.png',
+      link: '/projects/GrobKonzept_Abschlussarbeit.pdf',
+      linkLabel: 'Konzept ansehen',
+    },
   ];
 
-  // Play state
-  private sanitizer = inject(DomSanitizer);
   playingProject: Project | null = null;
   trustedGameUrl: SafeResourceUrl | null = null;
   loading = false;
   loadError = false;
 
+  selectedProject = signal<Project | null>(null);
+  expandedTechnical = signal<boolean>(false);
+
+  featuredProjects(): Project[] {
+    return this.projects.filter((project) => project.featured);
+  }
+
+  archiveProjects(): Project[] {
+    return this.projects.filter((project) => !project.featured);
+  }
+
   openGame(project: Project) {
     this.playingProject = project;
-    // For now use a known game path; you can expand project objects to include gamePath
     const gamePath = '/assets/games/lostFiles/index.html';
     this.trustedGameUrl = this.sanitizer.bypassSecurityTrustResourceUrl(gamePath);
     this.loading = true;
     this.loadError = false;
+
     setTimeout(() => {
-      if (this.loading) this.loadError = true;
+      if (this.loading) {
+        this.loadError = true;
+      }
     }, 7000);
   }
 
@@ -134,20 +243,17 @@ export class ProjectsComponent {
   }
 
   openDirect(event?: MouseEvent) {
-    if (event) event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
+
     const baseHref = document.querySelector('base')?.getAttribute('href') || '/';
-    const normalizedBase = baseHref.endsWith('/') ? baseHref : baseHref + '/';
-    const path = `${normalizedBase}assets/games/lostFiles/index.html`.replace(
-      '//assets',
-      '/assets',
-    );
+    const normalizedBase = baseHref.endsWith('/') ? baseHref : `${baseHref}/`;
+    const path = `${normalizedBase}assets/games/lostFiles/index.html`.replace('//assets', '/assets');
     const url = new URL(path, window.location.origin).href;
+
     window.open(url, '_blank', 'noopener,noreferrer');
   }
-
-  // Modal state for project cards
-  selectedProject = signal<Project | null>(null);
-  expandedTechnical = signal<boolean>(false);
 
   openProjectModal(project: Project) {
     this.selectedProject.set(project);
@@ -166,7 +272,6 @@ export class ProjectsComponent {
   }
 
   onModalBackdropClick(event: MouseEvent) {
-    // Close modal only if clicking on the backdrop itself, not the card
     if ((event.target as HTMLElement).classList.contains('modal-backdrop')) {
       this.closeProjectModal();
     }
@@ -179,15 +284,15 @@ export class ProjectsComponent {
     }
   }
 
-  // trackBy helpers for ngFor
   trackByTitle(index: number, item: Project): string | number {
     return item.title ?? index;
   }
 
   trackByIdentity<T>(index: number, item: T): string | number {
-    if (item === null || item === undefined) return index;
-    if (typeof item === 'string' || typeof item === 'number')
-      return item as unknown as string | number;
+    if (typeof item === 'string' || typeof item === 'number') {
+      return item;
+    }
+
     return index;
   }
 }
