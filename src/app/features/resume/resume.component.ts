@@ -119,22 +119,22 @@ export class ResumeComponent {
   skillGroups: SkillGroup[] = [
     {
       title: 'Frontend',
-      icon: '🧩',
+      icon: 'frontend',
       skills: ['React', 'Next.js', 'Angular', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'SCSS / SASS']
     },
     {
       title: 'Backend',
-      icon: '⚙️',
+      icon: 'backend',
       skills: ['C# / .NET', 'ASP.NET', 'Node.js', 'Express.js', 'REST APIs', 'SQL', 'MongoDB']
     },
     {
       title: 'UI/UX & SEO',
-      icon: '🎨',
+      icon: 'design',
       skills: ['Responsive Design', 'UX/UI', 'Performance', 'Technical SEO', 'Meta / Open Graph', 'JSON-LD']
     },
     {
       title: 'Deployment & DevOps',
-      icon: '🚀',
+      icon: 'devops',
       skills: ['Docker', 'Docker Compose', 'GitHub Actions', 'CI/CD', 'PM2', 'Nginx', 'SSH / rsync']
     }
   ];
