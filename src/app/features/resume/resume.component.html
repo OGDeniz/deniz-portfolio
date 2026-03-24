@@ -1,132 +1,217 @@
-<!-- src/app/features/resume/resume.component.html -->
-<section class="resume-page" appScrollAnimate="resume">
-  <h1 class="gradient-text">Lebenslauf</h1>
+<section class="resume-page" appScrollAnimate="resume-page">
+  <section class="resume-hero" appScrollAnimate="resume-hero">
+    <div class="resume-hero__grid">
+      <div class="resume-hero__content">
+        <span class="resume-hero__eyebrow">{{ hero.eyebrow }}</span>
+        <h1 class="resume-hero__title">{{ hero.title }}</h1>
+        <p class="resume-hero__intro">{{ hero.intro }}</p>
 
-  <!-- Persönliche Daten -->
-  <section class="resume-section personal-info-section">
-    <div class="personal-info-content">
-      <div class="personal-info-text">
-        <h2>Persönliche Daten</h2>
-        <ul class="info-list">
-          <li><strong>Name:</strong> {{ personalInfo.name }}</li>
-          <li><strong>Geboren am:</strong> {{ personalInfo.birthDate }} in {{ personalInfo.birthPlace }}</li>
-          <li><strong>Familienstand:</strong> {{ personalInfo.familyStatus }}</li>
-          <li><strong>Adresse:</strong> {{ personalInfo.address }}</li>
-          <li><strong>E-Mail:</strong> <a [href]="'mailto:' + personalInfo.email">{{ personalInfo.email }}</a></li>
-          <li><strong>Telefon:</strong> <a [href]="'tel:' + personalInfo.phone">{{ personalInfo.phone }}</a></li>
-        </ul>
-        <div class="download-section">
-          <a href="/LEBENSLAUF_Deniz_Yavuzkaya.pdf" download class="download-button">
-            <span class="download-icon">📋</span>
-            Lebenslauf herunterladen
+        <div class="resume-hero__tags">
+          @for (tag of hero.tags; track tag) {
+            <span class="resume-tag">{{ tag }}</span>
+          }
+        </div>
+
+        <div class="resume-actions">
+          <a href="/YavuzkayaCV.pdf" download class="resume-btn resume-btn--primary">
+            CV herunterladen
           </a>
-          <a href="/Abschlusszeugnis_SRH_GAME.pdf" download class="download-button">
-            <span class="download-icon">📄</span>
-            Abschlusszeugnis herunterladen
+          <a href="/Abschlusszeugnis_SRH_GAME.pdf" download class="resume-btn resume-btn--secondary">
+            Zeugnis herunterladen
           </a>
         </div>
       </div>
-      <div class="personal-info-photo">
-        <img src="/Bewerbungsfoto2.JPG" alt="Bewerbungsfoto" />
-      </div>
+
+      <aside class="resume-hero__panel">
+        <div class="profile-card">
+          <div class="profile-card__image">
+            <img src="/Bewerbungsfoto2.JPG" alt="Porträt von Deniz Yavuzkaya" />
+          </div>
+
+          <div class="profile-card__content">
+            <h2 class="profile-card__name">{{ personalInfo.name }}</h2>
+            <ul class="profile-card__list">
+              <li><strong>Standort:</strong> {{ personalInfo.location }}</li>
+              <li><strong>E-Mail:</strong> <a [href]="'mailto:' + personalInfo.email">{{ personalInfo.email }}</a></li>
+              <li><strong>Telefon:</strong> <a [href]="'tel:' + personalInfo.phone">{{ personalInfo.phone }}</a></li>
+              <li><strong>Website:</strong> <a href="https://www.dy-dev.de" target="_blank" rel="noopener">{{ personalInfo.website }}</a></li>
+              <li><strong>GitHub:</strong> <a href="https://github.com/OGDeniz" target="_blank" rel="noopener">{{ personalInfo.github }}</a></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
     </div>
   </section>
 
-  <!-- Schulbildung -->
-  <section class="resume-section">
-    <h2>Schulausbildung</h2>
-    <ul class="timeline">
-      @for (item of education; track item.title) {
-        <li>
-          <span class="period">{{ item.period }}</span>
-          <div class="content">
-            <strong>{{ item.title }}</strong><br />
-            <span *ngIf="item.institution">{{ item.institution }}</span>
-          </div>
-        </li>
+  <section class="resume-section" appScrollAnimate="resume-proof">
+    <div class="section-heading">
+      <span class="section-heading__eyebrow">Kurzprofil</span>
+      <h2 class="section-heading__title">Wofür ich stehe</h2>
+    </div>
+
+    <div class="proof-grid">
+      @for (fact of quickFacts; track fact) {
+        <article class="proof-card">
+          <span class="proof-card__dot"></span>
+          <p>{{ fact }}</p>
+        </article>
       }
-    </ul>
+    </div>
   </section>
 
-  <!-- Berufliche Ausbildung -->
-  <section class="resume-section">
-    <h2>Berufliche Ausbildung</h2>
-    <ul class="timeline">
-      @for (item of vocationalTraining; track item.title) {
-        <li>
-          <span class="period">{{ item.period }}</span>
-          <div class="content">
-            <strong>{{ item.title }}</strong><br />
-            <span *ngIf="item.institution">{{ item.institution }}</span>
-            <ul *ngIf="item.details" class="sub-list">
+  <section class="resume-section" appScrollAnimate="resume-experience">
+    <div class="section-heading">
+      <span class="section-heading__eyebrow">Beruflicher Fokus</span>
+      <h2 class="section-heading__title">Aktuelle Experience</h2>
+      <p class="section-heading__text">
+        Die wichtigsten Stationen für meine heutige Arbeit als Frontend- und Fullstack-Developer.
+      </p>
+    </div>
+
+    <div class="timeline timeline--featured">
+      @for (item of featuredExperience; track trackByTitle($index, item)) {
+        <article class="timeline-card">
+          <div class="timeline-card__period">{{ item.period }}</div>
+          <div class="timeline-card__body">
+            <div class="timeline-card__meta">
+              <h3>{{ item.title }}</h3>
+              <span *ngIf="item.highlight" class="timeline-card__highlight">{{ item.highlight }}</span>
+            </div>
+
+            <p *ngIf="item.subtitle" class="timeline-card__subtitle">{{ item.subtitle }}</p>
+
+            <ul *ngIf="item.details?.length" class="timeline-card__list">
               @for (detail of item.details; track detail) {
                 <li>{{ detail }}</li>
               }
             </ul>
           </div>
-        </li>
+        </article>
       }
-    </ul>
+    </div>
   </section>
 
-  <!-- Berufliche Erfahrung -->
-  <section class="resume-section">
-    <h2>Berufliche Erfahrung</h2>
-    <ul class="timeline">
-      @for (item of workExperience; track item.title + item.period) {
-        <li>
-          <span class="period">{{ item.period }}</span>
-          <div class="content">
-            <strong>{{ item.title }}</strong><br />
-            <span *ngIf="item.company">{{ item.company }}</span>
-            <ul *ngIf="item.details" class="sub-list">
-              @for (detail of item.details; track detail) {
-                <li>{{ detail }}</li>
-              }
-            </ul>
+  <section class="resume-section" appScrollAnimate="resume-projects">
+    <div class="section-heading">
+      <span class="section-heading__eyebrow">Referenzen</span>
+      <h2 class="section-heading__title">Ausgewählte Webprojekte</h2>
+    </div>
+
+    <div class="project-ref-grid">
+      @for (project of projects; track project.title) {
+        <article class="project-ref-card">
+          <span class="project-ref-card__type">{{ project.type }}</span>
+          <h3>{{ project.title }}</h3>
+          <a [href]="project.link" target="_blank" rel="noopener">{{ project.link }}</a>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="resume-section" appScrollAnimate="resume-skills">
+    <div class="section-heading">
+      <span class="section-heading__eyebrow">Kompetenzen</span>
+      <h2 class="section-heading__title">Technologien & Arbeitsbereiche</h2>
+    </div>
+
+    <div class="resume-skills-grid">
+      @for (group of skillGroups; track trackBySkillGroup($index, group)) {
+        <article class="resume-skill-card">
+          <h3>{{ group.icon }} {{ group.title }}</h3>
+
+          <div class="resume-skill-tags">
+            @for (skill of group.skills; track skill) {
+              <span class="resume-skill-tag">
+                @if (skillIconMap[skill]) {
+                  <i [class]="skillIconMap[skill]"></i>
+                }
+                {{ skill }}
+              </span>
+            }
           </div>
-        </li>
+        </article>
       }
-    </ul>
+    </div>
   </section>
 
-  <!-- Zusätzliche Qualifikationen -->
-  <section class="resume-section">
-    <h2>Zusätzliche Qualifikationen</h2>
-    <ul class="simple-list">
-      @for (qual of qualifications; track qual) {
-        <li>{{ qual }}</li>
-      }
-    </ul>
+  <section class="resume-section" appScrollAnimate="resume-tools">
+    <div class="resume-meta-grid">
+      <article class="resume-meta-card">
+        <h3>Tools</h3>
+        <div class="resume-chip-list">
+          @for (tool of tools; track tool) {
+            <span class="resume-chip">{{ tool }}</span>
+          }
+        </div>
+      </article>
+
+      <article class="resume-meta-card">
+        <h3>Sprachen</h3>
+        <ul class="resume-info-list">
+          @for (lang of languages; track trackByLanguage($index, lang)) {
+            <li><strong>{{ lang.language }}:</strong> {{ lang.level }}</li>
+          }
+        </ul>
+      </article>
+
+      <article class="resume-meta-card">
+        <h3>Qualifikationen</h3>
+        <ul class="resume-info-list">
+          @for (qual of qualifications; track qual) {
+            <li>{{ qual }}</li>
+          }
+        </ul>
+      </article>
+
+      <article class="resume-meta-card">
+        <h3>Interessen</h3>
+        <div class="resume-chip-list">
+          @for (interest of interests; track interest) {
+            <span class="resume-chip">{{ interest }}</span>
+          }
+        </div>
+      </article>
+    </div>
   </section>
 
-  <!-- Sprachkenntnisse -->
-  <section class="resume-section">
-    <h2>Sprachkenntnisse</h2>
-    <ul class="info-list">
-      @for (lang of languages; track lang.language) {
-        <li><strong>{{ lang.language }}:</strong> {{ lang.level }}</li>
+  <section class="resume-section" appScrollAnimate="resume-education">
+    <div class="section-heading">
+      <span class="section-heading__eyebrow">Ausbildung</span>
+      <h2 class="section-heading__title">Schulischer Hintergrund</h2>
+    </div>
+
+    <div class="timeline timeline--compact">
+      @for (item of education; track trackByTitle($index, item)) {
+        <article class="timeline-card timeline-card--compact">
+          <div class="timeline-card__period">{{ item.period }}</div>
+          <div class="timeline-card__body">
+            <h3>{{ item.title }}</h3>
+            <p *ngIf="item.subtitle" class="timeline-card__subtitle">{{ item.subtitle }}</p>
+          </div>
+        </article>
       }
-    </ul>
+    </div>
   </section>
 
-  <!-- Kenntnisse und Fähigkeiten -->
-  <section class="resume-section">
-    <h2>Kenntnisse &amp; Fähigkeiten</h2>
-    <ul class="simple-list">
-      @for (skill of skills; track skill) {
-        <li>{{ skill }}</li>
-      }
-    </ul>
-  </section>
+  <section class="resume-section" appScrollAnimate="resume-background">
+    <div class="section-heading">
+      <span class="section-heading__eyebrow">Weitere Stationen</span>
+      <h2 class="section-heading__title">Beruflicher Hintergrund</h2>
+      <p class="section-heading__text">
+        Frühere Stationen, die meine Selbstständigkeit, Belastbarkeit und Praxiserfahrung geprägt haben.
+      </p>
+    </div>
 
-  <!-- Hobbys & Interessen -->
-  <section class="resume-section">
-    <h2>Hobbys &amp; Interessen</h2>
-    <ul class="simple-list">
-      @for (hobby of hobbies; track hobby) {
-        <li>{{ hobby }}</li>
+    <div class="timeline timeline--compact">
+      @for (item of backgroundExperience; track trackByTitle($index, item)) {
+        <article class="timeline-card timeline-card--compact timeline-card--muted">
+          <div class="timeline-card__period">{{ item.period }}</div>
+          <div class="timeline-card__body">
+            <h3>{{ item.title }}</h3>
+            <p *ngIf="item.subtitle" class="timeline-card__subtitle">{{ item.subtitle }}</p>
+          </div>
+        </article>
       }
-    </ul>
+    </div>
   </section>
 </section>
