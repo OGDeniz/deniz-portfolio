@@ -1,13 +1,13 @@
 import { Component, HostBinding, HostListener, signal, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { NgFor, AsyncPipe } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { ThemeToggleComponent } from '../theme-toggle/theme-toggle.component';
 import { NavigationService } from '../../../services/navigation.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, NgFor, AsyncPipe, ThemeToggleComponent],
+  imports: [RouterLink, RouterLinkActive, NgFor, ThemeToggleComponent],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss']
 })

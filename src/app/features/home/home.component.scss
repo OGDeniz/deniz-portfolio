@@ -134,7 +134,7 @@
   margin-bottom: 1.35rem;
   border: 1px solid var(--clr-primary-20);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--clr-surface);
   backdrop-filter: blur(var(--blur-glass));
   font-size: 0.88rem;
   font-weight: 600;
@@ -197,9 +197,9 @@
 
 .stack-pill {
   padding: 0.7rem 0.95rem;
-  border: 1px solid var(--clr-overlay-light);
+  border: 1px solid var(--clr-border);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--clr-surface);
   color: var(--clr-text);
   font-size: 0.92rem;
   font-weight: 500;
@@ -238,8 +238,8 @@
 }
 
 .btn--secondary {
-  border: 1px solid var(--clr-overlay-light);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--clr-border);
+  background: var(--clr-surface);
   color: var(--clr-text);
   backdrop-filter: blur(var(--blur-glass));
 }
@@ -270,8 +270,8 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  border: 1px solid var(--clr-overlay-light);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--clr-border);
+  background: var(--clr-surface);
   color: var(--clr-text-muted);
   text-decoration: none;
   backdrop-filter: blur(var(--blur-glass));
@@ -294,10 +294,10 @@
 
 .hero-card,
 .hero-proof__item {
-  border: 1px solid var(--clr-overlay-light);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--clr-border);
+  background: var(--clr-surface);
   backdrop-filter: blur(var(--blur-glass));
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 10px 40px var(--clr-overlay-dark);
 }
 
 .hero-card {
@@ -505,7 +505,7 @@
   font-size: 0.85rem;
   padding: 0.4rem 0.7rem;
   border-radius: 999px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--clr-overlay-light);
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
   color: var(--clr-text-muted);
 }

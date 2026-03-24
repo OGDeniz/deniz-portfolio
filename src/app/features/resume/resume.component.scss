@@ -1,9 +1,9 @@
 :host {
   display: block;
   background:
-    radial-gradient(circle at 15% 15%, rgba(0, 255, 255, 0.06), transparent 26%),
-    radial-gradient(circle at 85% 20%, rgba(120, 119, 198, 0.09), transparent 24%),
-    radial-gradient(circle at 70% 80%, rgba(0, 140, 255, 0.06), transparent 24%),
+    radial-gradient(circle at 15% 15%, var(--clr-primary-05), transparent 26%),
+    radial-gradient(circle at 85% 20%, var(--clr-accent-05), transparent 24%),
+    radial-gradient(circle at 70% 80%, var(--clr-secondary-05), transparent 24%),
     var(--clr-bg);
   color: var(--clr-text);
 }
@@ -39,7 +39,7 @@
 .section-heading__eyebrow {
   display: inline-block;
   margin-bottom: 1rem;
-  color: rgba(255, 255, 255, 0.58);
+  color: var(--clr-text-muted);
   font-size: 0.82rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -52,13 +52,13 @@
   line-height: 0.95;
   letter-spacing: -0.05em;
   font-weight: 800;
-  color: #f4f6fb;
+  color: var(--clr-text-light);
 }
 
 .resume-hero__intro,
 .section-heading__text {
   max-width: 68ch;
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--clr-text-dark);
   line-height: 1.85;
   font-size: 1rem;
 }
@@ -79,13 +79,12 @@
   min-height: 40px;
   padding: 0.62rem 0.95rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.025));
-  color: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--clr-border);
+  background: var(--clr-surface);
+  color: var(--clr-text);
   font-size: 0.86rem;
   line-height: 1.2;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 1px 0 var(--clr-surface-hover);
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
@@ -98,10 +97,10 @@
 .resume-chip:hover,
 .resume-skill-tag:hover {
   transform: translateY(-2px);
-  border-color: rgba(0, 255, 255, 0.22);
-  background: linear-gradient(180deg, rgba(0, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
-  color: #ffffff;
-  box-shadow: 0 0 18px rgba(0, 255, 255, 0.1);
+  border-color: var(--clr-primary-20);
+  background: var(--clr-primary-10);
+  color: var(--clr-text-light);
+  box-shadow: 0 0 18px var(--clr-primary-10);
 }
 
 .resume-actions {
@@ -139,8 +138,8 @@
 
 .resume-btn--secondary {
   color: var(--clr-text);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--clr-border);
+  background: var(--clr-surface);
 }
 
 /* profile card */
@@ -151,13 +150,12 @@
 .resume-skill-card,
 .resume-meta-card {
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02));
+  border: 1px solid var(--clr-border);
+  background: var(--clr-surface);
   backdrop-filter: blur(14px);
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    0 20px 50px var(--clr-overlay-dark),
+    inset 0 1px 0 var(--clr-surface-hover);
 }
 
 .profile-card {
@@ -167,7 +165,7 @@
 .profile-card__image {
   aspect-ratio: 4 / 4.2;
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--clr-border);
 }
 
 .profile-card__image img {
@@ -193,11 +191,11 @@
   list-style: none;
   display: grid;
   gap: 0.75rem;
-  color: rgba(255, 255, 255, 0.74);
+  color: var(--clr-text-dark);
 }
 
 .profile-card__list a {
-  color: #8defff;
+  color: var(--clr-primary);
   text-decoration: none;
 }
 
@@ -231,13 +229,13 @@
   height: 9px;
   margin-bottom: 1rem;
   border-radius: 50%;
-  background: #38e8ff;
-  box-shadow: 0 0 14px rgba(56, 232, 255, 0.8);
+  background: var(--clr-primary);
+  box-shadow: 0 0 14px var(--clr-primary-30);
 }
 
 .proof-card p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.74);
+  color: var(--clr-text-dark);
   line-height: 1.75;
 }
 
@@ -265,7 +263,7 @@
 .timeline-card__period {
   font-size: 0.88rem;
   font-weight: 700;
-  color: #8defff;
+  color: var(--clr-primary);
   letter-spacing: 0.04em;
 }
 
@@ -282,7 +280,7 @@
   margin: 0;
   font-size: 1.2rem;
   line-height: 1.2;
-  color: #f4f6fb;
+  color: var(--clr-text-light);
 }
 
 .timeline-card__highlight {
@@ -291,21 +289,21 @@
   min-height: 30px;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  background: rgba(0, 255, 255, 0.09);
-  color: #8defff;
+  background: var(--clr-primary-10);
+  color: var(--clr-primary);
   font-size: 0.78rem;
-  border: 1px solid rgba(0, 255, 255, 0.12);
+  border: 1px solid var(--clr-primary-20);
 }
 
 .timeline-card__subtitle {
   margin: 0 0 0.8rem;
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--clr-text-dark);
 }
 
 .timeline-card__list {
   margin: 0;
   padding-left: 1.15rem;
-  color: rgba(255, 255, 255, 0.74);
+  color: var(--clr-text-dark);
   line-height: 1.75;
 }
 
@@ -323,7 +321,7 @@
 .project-ref-card__type {
   display: inline-block;
   margin-bottom: 0.7rem;
-  color: #8defff;
+  color: var(--clr-primary);
   font-size: 0.78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -335,7 +333,7 @@
 }
 
 .project-ref-card a {
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--clr-text-dark);
   text-decoration: none;
   word-break: break-word;
 }
@@ -388,7 +386,7 @@
 .resume-info-list {
   margin: 0;
   padding-left: 1.15rem;
-  color: rgba(255, 255, 255, 0.74);
+  color: var(--clr-text-dark);
   line-height: 1.8;
 }
 
