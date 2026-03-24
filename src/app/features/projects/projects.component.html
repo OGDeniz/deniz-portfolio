@@ -1,20 +1,26 @@
 <div class="projects-shell">
   <section class="projects-hero" appScrollAnimate="projects-hero">
-    <div class="projects-hero__intro">
-      <span class="projects-hero__eyebrow">Ausgewählte Arbeiten</span>
+    <div class="projects-hero__layout">
+      <div class="projects-hero__intro">
+        <span class="projects-hero__eyebrow">Ausgewählte Arbeiten</span>
 
-      <h1 class="projects-hero__title">
-        Projekte mit Fokus auf Frontend, UX und technische Umsetzung
-      </h1>
+        <h1 class="projects-hero__title">
+          Projekte mit Fokus auf Frontend, UX und technische Umsetzung
+        </h1>
 
-      <p class="projects-hero__text">
-        Eine kuratierte Auswahl aus Web-, App- und Game-Projekten. Mein Fokus liegt auf
-        performanten Interfaces, klarer Nutzerführung, wartbarer Architektur und Lösungen,
-        die nicht nur gut aussehen, sondern im echten Einsatz funktionieren.
-      </p>
+        <p class="projects-hero__text">
+          Eine kuratierte Auswahl aus Web-, App- und Game-Projekten. Mein Fokus liegt auf
+          performanten Interfaces, klarer Nutzerführung, wartbarer Architektur und Lösungen,
+          die nicht nur gut aussehen, sondern im echten Einsatz funktionieren.
+        </p>
 
-      <div class="projects-hero__tags">
-        <span *ngFor="let tag of introTags; trackBy: trackByIdentity">{{ tag }}</span>
+        <div class="projects-hero__tags">
+          <span *ngFor="let tag of introTags; trackBy: trackByIdentity">{{ tag }}</span>
+        </div>
+      </div>
+
+      <div class="projects-hero__visual">
+        <app-tech-sphere></app-tech-sphere>
       </div>
     </div>
   </section>
@@ -69,6 +75,7 @@
               class="tech-tag"
               *ngFor="let tech of project.technologies; trackBy: trackByIdentity"
             >
+              @if (techIconMap[tech]) { <i [class]="techIconMap[tech]"></i> }
               {{ tech }}
             </span>
           </div>
@@ -146,6 +153,7 @@
               class="tech-tag"
               *ngFor="let tech of project.technologies; trackBy: trackByIdentity"
             >
+              @if (techIconMap[tech]) { <i [class]="techIconMap[tech]"></i> }
               {{ tech }}
             </span>
           </div>
@@ -283,6 +291,7 @@
             class="tech-tag"
             *ngFor="let tech of project.technologies; trackBy: trackByIdentity"
           >
+            @if (techIconMap[tech]) { <i [class]="techIconMap[tech]"></i> }
             {{ tech }}
           </span>
         </div>

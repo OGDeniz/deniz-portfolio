@@ -2,6 +2,7 @@ import { Component, HostListener, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ScrollAnimateDirective } from '../../shared/directives/scroll-animate.directive';
+import { TechSphereComponent } from './tech-sphere.component';
 
 type ProjectCategory = 'Web' | 'App' | 'Game' | 'Portfolio';
 
@@ -27,7 +28,7 @@ interface Project {
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, ScrollAnimateDirective],
+  imports: [CommonModule, ScrollAnimateDirective, TechSphereComponent],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
 })
@@ -199,6 +200,29 @@ export class ProjectsComponent {
       linkLabel: 'Konzept ansehen',
     },
   ];
+
+  readonly techIconMap: Record<string, string> = {
+    'React': 'devicon-react-original colored',
+    'Next.js': 'devicon-nextjs-plain',
+    'TypeScript': 'devicon-typescript-plain colored',
+    'JavaScript': 'devicon-javascript-plain colored',
+    'Tailwind CSS': 'devicon-tailwindcss-plain colored',
+    'TailwindCSS': 'devicon-tailwindcss-plain colored',
+    'Angular': 'devicon-angular-plain colored',
+    'Angular 20': 'devicon-angular-plain colored',
+    'Vite': 'devicon-vitejs-plain colored',
+    'CSS': 'devicon-css3-plain colored',
+    'SCSS': 'devicon-sass-plain colored',
+    'HTML5': 'devicon-html5-plain colored',
+    'Kotlin': 'devicon-kotlin-plain colored',
+    'Android': 'devicon-android-plain colored',
+    'Java': 'devicon-java-plain colored',
+    'Unity': 'devicon-unity-plain',
+    'C#': 'devicon-csharp-plain colored',
+    'Blender 3D': 'devicon-blender-original colored',
+    'Docker': 'devicon-docker-plain colored',
+    'Git': 'devicon-git-plain colored',
+  };
 
   playingProject: Project | null = null;
   trustedGameUrl: SafeResourceUrl | null = null;

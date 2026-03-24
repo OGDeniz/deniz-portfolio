@@ -432,6 +432,12 @@
     box-shadow 0.2s ease;
 }
 
+.skill-tag i[class*='devicon'] {
+  font-size: 1.1rem;
+  margin-right: 0.4rem;
+  flex-shrink: 0;
+}
+
 .skill-tag:hover {
   transform: translateY(-2px);
   border-color: rgba(0, 255, 255, 0.22);

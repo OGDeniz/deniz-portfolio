@@ -126,7 +126,12 @@
 
         <div class="skill-tags">
           @for (skill of category.skills; track skill) {
-            <span class="skill-tag">{{ skill }}</span>
+            <span class="skill-tag">
+              @if (techIconMap[skill]) {
+                <i [class]="techIconMap[skill]"></i>
+              }
+              {{ skill }}
+            </span>
           }
         </div>
       </article>

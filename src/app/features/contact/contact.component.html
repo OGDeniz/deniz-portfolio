@@ -1,45 +1,173 @@
-<section class="contact" appScrollAnimate="contact">
-  <h2>Kontakt</h2>
-  <p>Ich freue mich über Ihre Nachricht. Bitte füllen Sie das Formular aus und ich melde mich zeitnah zurück.</p>
+<section class="contact-page" appScrollAnimate="contact-page">
+  <section class="contact-hero" appScrollAnimate="contact-hero">
+    <div class="contact-hero__layout">
+      <div class="contact-hero__content">
+        <span class="contact-hero__eyebrow">{{ hero.eyebrow }}</span>
+        <h1 class="contact-hero__title">{{ hero.title }}</h1>
+        <p class="contact-hero__intro">{{ hero.intro }}</p>
 
-  <form [formGroup]="form" (ngSubmit)="submit()" appScrollAnimate="contact-form">
-    <div class="form-field">
-      <label for="name">Name</label>
-      <input id="name" type="text" formControlName="name" [class.invalid]="submitted && c.name.invalid">
-      <div class="error" *ngIf="submitted && c.name.errors?.['required']">Name ist erforderlich.</div>
-    </div>
+        <div class="contact-hero__facts">
+          @for (fact of quickFacts; track fact) {
+            <span class="contact-fact">{{ fact }}</span>
+          }
+        </div>
+      </div>
 
-    <div class="form-field">
-      <label for="email">E-Mail</label>
-      <input id="email" type="email" formControlName="email" [class.invalid]="submitted && c.email.invalid">
-      <div class="error" *ngIf="submitted && c.email.errors?.['required']">E-Mail ist erforderlich.</div>
-      <div class="error" *ngIf="submitted && c.email.errors?.['email']">Bitte geben Sie eine gültige E-Mail-Adresse ein.</div>
-    </div>
-
-    <div class="form-field">
-      <label for="subject">Betreff</label>
-      <input id="subject" type="text" formControlName="subject">
-    </div>
-
-    <div class="form-field">
-      <label for="message">Nachricht</label>
-      <textarea id="message" rows="6" formControlName="message" [class.invalid]="submitted && c.message.invalid" placeholder="Geben Sie hier mind. 20 Zeichen ein"></textarea>
-      <div class="error" *ngIf="submitted && c.message.errors?.['required']">Nachricht ist erforderlich.</div>
-      <div class="error" *ngIf="submitted && c.message.errors?.['minlength']">
-        Nachricht muss mindestens {{ c.message.errors?.['minlength']?.['requiredLength'] }} Zeichen lang sein.
+      <div class="contact-hero__visual">
+        <app-contact-mg></app-contact-mg>
       </div>
     </div>
+  </section>
 
-    <div class="form-field checkbox">
-      <label>
-        <input type="checkbox" formControlName="privacy">
-        Ich habe die <a href="/privacy" target="_blank">Datenschutzerklärung</a> gelesen und akzeptiere sie.
-      </label>
-      <div class="error" *ngIf="submitted && c.privacy.invalid">Bitte akzeptieren Sie die Datenschutzerklärung.</div>
+  <section class="contact-layout">
+    <aside class="contact-sidebar" appScrollAnimate="contact-sidebar">
+      <div class="contact-card">
+        <span class="contact-card__eyebrow">Direkte Kontaktwege</span>
+        <h2 class="contact-card__title">Schnell und unkompliziert</h2>
+
+        <div class="contact-card-list">
+          @for (item of contactCards; track trackByTitle($index, item)) {
+            <article class="contact-item">
+              <div class="contact-item__top">
+                <span class="contact-item__label">{{ item.title }}</span>
+              </div>
+
+              @if (item.link) {
+                <a class="contact-item__value" [href]="item.link" [target]="item.link.startsWith('http') ? '_blank' : null" rel="noopener">
+                  {{ item.value }}
+                </a>
+              } @else {
+                <p class="contact-item__value contact-item__value--text">{{ item.value }}</p>
+              }
+
+              <p class="contact-item__meta">{{ item.meta }}</p>
+            </article>
+          }
+        </div>
+      </div>
+
+      <div class="contact-card contact-card--secondary">
+        <span class="contact-card__eyebrow">Geeignet für</span>
+        <h2 class="contact-card__title">Themen, bei denen du mich anfragen kannst</h2>
+
+        <div class="contact-topic-list">
+          <span class="contact-topic">Frontend Development</span>
+          <span class="contact-topic">Fullstack Webprojekte</span>
+          <span class="contact-topic">React / Next.js</span>
+          <span class="contact-topic">Angular</span>
+          <span class="contact-topic">UI / UX</span>
+          <span class="contact-topic">Performance & SEO</span>
+          <span class="contact-topic">Deployment / CI/CD</span>
+          <span class="contact-topic">Projektanfragen</span>
+          <span class="contact-topic">Festanstellung</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="contact-form-card" appScrollAnimate="contact-form-card">
+      <div class="contact-form-card__header">
+        <span class="contact-card__eyebrow">Kontaktformular</span>
+        <h2 class="contact-form-card__title">Schreib mir eine Nachricht</h2>
+        <p class="contact-form-card__text">
+          Je konkreter deine Anfrage ist, desto schneller und gezielter kann ich dir antworten.
+        </p>
+      </div>
+
+      <form class="contact-form" [formGroup]="form" (ngSubmit)="submit()">
+        <div class="contact-form__grid">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              [class.invalid]="submitted && c.name.invalid"
+              placeholder="Dein Name"
+            />
+            <div class="error" *ngIf="submitted && c.name.errors?.['required']">
+              Name ist erforderlich.
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="email">E-Mail</label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              [class.invalid]="submitted && c.email.invalid"
+              placeholder="deine@email.de"
+            />
+            <div class="error" *ngIf="submitted && c.email.errors?.['required']">
+              E-Mail ist erforderlich.
+            </div>
+            <div class="error" *ngIf="submitted && c.email.errors?.['email']">
+              Bitte gib eine gültige E-Mail-Adresse ein.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="subject">Betreff</label>
+          <input
+            id="subject"
+            type="text"
+            formControlName="subject"
+            placeholder="Worum geht es?"
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="message">Nachricht</label>
+          <textarea
+            id="message"
+            rows="7"
+            formControlName="message"
+            [class.invalid]="submitted && c.message.invalid"
+            placeholder="Beschreibe kurz dein Projekt, deine Anfrage oder die Position."
+          ></textarea>
+          <div class="error" *ngIf="submitted && c.message.errors?.['required']">
+            Nachricht ist erforderlich.
+          </div>
+          <div class="error" *ngIf="submitted && c.message.errors?.['minlength']">
+            Die Nachricht muss mindestens
+            {{ c.message.errors?.['minlength']?.['requiredLength'] }} Zeichen lang sein.
+          </div>
+        </div>
+
+        <div class="form-field form-field--checkbox">
+          <label class="checkbox-label">
+            <input type="checkbox" formControlName="privacy" />
+            <span>
+              Ich habe die
+              <a href="/privacy" target="_blank" rel="noopener">Datenschutzerklärung</a>
+              gelesen und akzeptiere sie.
+            </span>
+          </label>
+          <div class="error" *ngIf="submitted && c.privacy.invalid">
+            Bitte akzeptiere die Datenschutzerklärung.
+          </div>
+        </div>
+
+        <div class="form-status" *ngIf="successMessage || errorMessage">
+          <div class="form-status__success" *ngIf="successMessage">
+            {{ successMessage }}
+          </div>
+          <div class="form-status__error" *ngIf="errorMessage">
+            {{ errorMessage }}
+          </div>
+        </div>
+
+        <div class="contact-form__actions">
+          <button type="submit" class="contact-btn contact-btn--primary" [disabled]="sending">
+            {{ sending ? 'Wird gesendet...' : 'Nachricht senden' }}
+          </button>
+
+          <a class="contact-btn contact-btn--secondary" href="mailto:denizyavuzkaya@gmail.com">
+            Direkt per E-Mail
+          </a>
+        </div>
+      </form>
     </div>
-
-    <button type="submit" [disabled]="form.invalid || sending">
-      {{ sending ? 'Senden...' : 'Nachricht senden' }}
-    </button>
-  </form>
+  </section>
 </section>

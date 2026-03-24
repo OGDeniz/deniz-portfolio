@@ -20,8 +20,33 @@
   margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
+.projects-hero__layout {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 .projects-hero__intro {
-  max-width: 900px;
+  flex: 1;
+  min-width: 0;
+}
+
+.projects-hero__visual {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+  margin-right: -3rem;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
 }
 
 .projects-hero__eyebrow,
@@ -299,12 +324,20 @@
 }
 
 .tech-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   padding: 0.5rem 0.72rem;
   border-radius: 999px;
   border: 1px solid var(--clr-overlay-light);
   background: rgba(255, 255, 255, 0.04);
   color: var(--clr-text);
   font-size: 0.8rem;
+
+  i[class*='devicon'] {
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
 }
 
 /* BUTTONS */

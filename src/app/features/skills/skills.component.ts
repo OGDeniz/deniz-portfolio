@@ -30,6 +30,27 @@ export class SkillsComponent {
     { label: 'Deployment bis Livegang', icon: 'server' }
   ];
 
+  readonly techIconMap: Record<string, string> = {
+    'TypeScript': 'devicon-typescript-plain colored',
+    'JavaScript': 'devicon-javascript-plain colored',
+    'React': 'devicon-react-original colored',
+    'Next.js': 'devicon-nextjs-plain',
+    'Angular': 'devicon-angular-plain colored',
+    'C# / .NET': 'devicon-csharp-plain colored',
+    'Node.js / Express.js': 'devicon-nodejs-plain colored',
+    'ASP.NET': 'devicon-dot-net-plain colored',
+    'SQL': 'devicon-mysql-plain colored',
+    'MongoDB / NoSQL': 'devicon-mongodb-plain colored',
+    'HTML': 'devicon-html5-plain colored',
+    'CSS / SCSS / SASS': 'devicon-sass-plain colored',
+    'Tailwind CSS': 'devicon-tailwindcss-plain colored',
+    'Docker': 'devicon-docker-plain colored',
+    'Docker Compose': 'devicon-docker-plain colored',
+    'Git / GitHub': 'devicon-git-plain colored',
+    'GitHub Actions': 'devicon-github-original',
+    'Nginx': 'devicon-nginx-plain colored',
+  };
+
   skillCategories: SkillCategory[] = [
     {
       eyebrow: 'Core Stack',
