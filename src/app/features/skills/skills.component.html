@@ -1,104 +1,135 @@
-<section class="skills-page" appScrollAnimate="skills">
-  <h1>Skills</h1>
-  <p class="skills-intro">Meine technischen und persönlichen Kompetenzen, die ich in Projekten einsetze:</p>
+<section class="skills-page" appScrollAnimate="skills-page">
+  <div class="skills-hero" appScrollAnimate="skills-hero">
+    <div class="skills-hero__grid">
+      <div class="skills-hero__content">
+        <span class="skills-hero__eyebrow">Skills & Technologien</span>
 
-  <!-- Frontend Skills -->
-  <div class="skills-category" appScrollAnimate="skills-frontend">
-    <h2>Frontend Development</h2>
-    <ul>
-      @for (skill of frontendSkills; track skill.name) {
-        <li class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">{{ skill.name }}</span>
-            <span class="skill-value">{{ skill.level }}%</span>
+        <h1 class="skills-hero__title">
+          Frontend, Architektur, Deployment und technische Umsetzung
+        </h1>
+
+        <p class="skills-hero__intro">
+          Mein Schwerpunkt liegt auf modernen Webanwendungen mit klarer Nutzerführung,
+          skalierbarer Frontend-Architektur und einer sauberen technischen Auslieferung
+          bis in produktive Server-Umgebungen.
+        </p>
+
+        <div class="skills-hero__facts">
+          @for (fact of heroFacts; track fact.label) {
+            <div class="skills-fact">
+              @switch (fact.icon) {
+                @case ('stack') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M12 4 4 8l8 4 8-4-8-4Z" />
+                    <path d="M4 12l8 4 8-4" />
+                  </svg>
+                }
+                @case ('ui') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="3" y="4" width="18" height="14" rx="2" />
+                    <path d="M8 20h8" />
+                  </svg>
+                }
+                @case ('server') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="4" y="4" width="16" height="6" rx="2" />
+                    <rect x="4" y="14" width="16" height="6" rx="2" />
+                  </svg>
+                }
+              }
+              <span>{{ fact.label }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+        <div class="skills-hero__visual" appScrollAnimate="skills-visual">
+          <div class="skills-hero__visual-frame">
+            <iframe
+              class="skills-hero__visual-embed"
+              src="assets/skills-visual/index.html"
+              title="Interaktive 3D Laptop Visualisierung"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            ></iframe>
+
+            <div class="skills-hero__visual-overlay"></div>
+
+            <div class="skills-hero__visual-badge">
+              <span class="skills-hero__visual-dot"></span>
+              <span>Interactive 3D Laptop</span>
+            </div>
           </div>
-          <div class="skill-bar">
-            <div
-              class="skill-progress"
-              [style.width.%]="skill.level"
-              role="progressbar"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              aria-valuenow="{{ skill.level }}"
-            ></div>
-          </div>
-        </li>
-      }
-    </ul>
+        </div>
+    </div>
   </div>
 
-  <!-- Backend Skills -->
-  <div class="skills-category">
-    <h2>Backend Development</h2>
-    <ul>
-      @for (skill of backendSkills; track skill.name) {
-        <li class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">{{ skill.name }}</span>
-            <span class="skill-value">{{ skill.level }}%</span>
-          </div>
-          <div class="skill-bar">
-            <div
-              class="skill-progress"
-              [style.width.%]="skill.level"
-              role="progressbar"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              aria-valuenow="{{ skill.level }}"
-            ></div>
-          </div>
-        </li>
-      }
-    </ul>
-  </div>
+  <div class="skills-grid">
+    @for (category of skillCategories; track category.title; let i = $index) {
+      <article
+        class="skill-card"
+        [attr.data-accent]="category.accent"
+        [appScrollAnimate]="'skill-card-' + i"
+      >
+        <div class="skill-card__header">
+          <div class="skill-card__top">
+            <div class="skill-card__icon" [attr.data-accent]="category.accent">
+              @switch (category.icon) {
+                @case ('stack') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M12 4 4 8l8 4 8-4-8-4Z" />
+                    <path d="M4 12l8 4 8-4" />
+                    <path d="M4 16l8 4 8-4" />
+                  </svg>
+                }
+                @case ('frontend') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="3" y="4" width="18" height="14" rx="2" />
+                    <path d="M8 20h8" />
+                    <path d="M10 9l-2 3 2 3" />
+                    <path d="M14 9l2 3-2 3" />
+                  </svg>
+                }
+                @case ('server') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="4" y="4" width="16" height="6" rx="2" />
+                    <rect x="4" y="14" width="16" height="6" rx="2" />
+                    <path d="M8 7h.01" />
+                    <path d="M8 17h.01" />
+                    <path d="M12 7h4" />
+                    <path d="M12 17h4" />
+                  </svg>
+                }
+                @case ('seo') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="11" cy="11" r="6" />
+                    <path d="m20 20-3.5-3.5" />
+                    <path d="M11 8v3l2 2" />
+                  </svg>
+                }
+                @case ('engineering') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-2 2.3-2.3Z" />
+                  </svg>
+                }
+              }
+            </div>
 
-  <!-- Tools & Technologien -->
-  <div class="skills-category">
-    <h2>Tools & Technologien</h2>
-    <ul>
-      @for (skill of toolsSkills; track skill.name) {
-        <li class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">{{ skill.name }}</span>
-            <span class="skill-value">{{ skill.level }}%</span>
+            <div class="skill-card__heading">
+              <span class="skill-card__eyebrow">{{ category.eyebrow }}</span>
+              <h2 class="skill-card__title">{{ category.title }}</h2>
+            </div>
           </div>
-          <div class="skill-bar">
-            <div
-              class="skill-progress"
-              [style.width.%]="skill.level"
-              role="progressbar"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              aria-valuenow="{{ skill.level }}"
-            ></div>
-          </div>
-        </li>
-      }
-    </ul>
-  </div>
 
-  <!-- Soft Skills -->
-  <div class="skills-category">
-    <h2>Soft Skills & Kompetenzen</h2>
-    <ul>
-      @for (skill of softSkills; track skill.name) {
-        <li class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name">{{ skill.name }}</span>
-            <span class="skill-value">{{ skill.level }}%</span>
-          </div>
-          <div class="skill-bar">
-            <div
-              class="skill-progress"
-              [style.width.%]="skill.level"
-              role="progressbar"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              aria-valuenow="{{ skill.level }}"
-            ></div>
-          </div>
-        </li>
-      }
-    </ul>
+          <p class="skill-card__description">{{ category.description }}</p>
+        </div>
+
+        <div class="skill-tags">
+          @for (skill of category.skills; track skill) {
+            <span class="skill-tag">{{ skill }}</span>
+          }
+        </div>
+      </article>
+    }
   </div>
 </section>

@@ -1,57 +1,133 @@
-import { ScrollAnimateDirective } from '../../shared/directives/scroll-animate.directive';
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ScrollAnimateDirective } from '../../shared/directives/scroll-animate.directive';
+
+interface SkillCategory {
+  title: string;
+  eyebrow: string;
+  description: string;
+  skills: string[];
+  icon: 'stack' | 'frontend' | 'server' | 'seo' | 'engineering';
+  accent: 'cyan' | 'violet' | 'blue' | 'emerald' | 'amber';
+}
+
+interface HeroFact {
+  label: string;
+  icon: 'stack' | 'ui' | 'server';
+}
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, ScrollAnimateDirective],
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.scss']
 })
 export class SkillsComponent {
-  // Frontend Skills
-  frontendSkills = [
-    { name: 'HTML', level: 95 },
-    { name: 'CSS/SCSS', level: 90 },
-    { name: 'JavaScript', level: 90 },
-    { name: 'TypeScript', level: 85 },
-    { name: 'Angular', level: 80 },
-    { name: 'React', level: 80 },
-    { name: 'Vue.js', level: 75 },
-    { name: 'UI/UX Design', level: 80 },
-    { name: 'Responsive Design', level: 85 }
+  heroFacts: HeroFact[] = [
+    { label: 'Fullstack mit Frontend-Fokus', icon: 'stack' },
+    { label: 'Skalierbare UI-Systeme', icon: 'ui' },
+    { label: 'Deployment bis Livegang', icon: 'server' }
   ];
 
-  // Backend Skills
-  backendSkills = [
-    { name: 'Node.js', level: 80 },
-    { name: 'ASP.NET Core', level: 75 },
-    { name: 'SQL', level: 70 },
-    { name: 'PHP', level: 50 },
-    { name: 'NoSQL (MongoDB)', level: 80 },
-    { name: 'Game Development', level: 70 },
-    { name: 'Performance Optimierung', level: 85 }
-  ];
-
-  // Tools & Technologien
-  toolsSkills = [
-    { name: 'Git & GitHub', level: 85 },
-    { name: 'Visual Studio / Rider', level: 85 },
-    { name: 'Android Studio', level: 75 },
-    { name: 'Figma', level: 80 },
-    { name: 'Adobe Suite (Photoshop, Illustrator)', level: 75 },
-    { name: 'Blender 3D', level: 70 },
-    { name: 'Docker', level: 65 }
-  ];
-
-  // Soft Skills
-  softSkills = [
-    { name: 'Kommunikation', level: 90 },
-    { name: 'Teamfähigkeit', level: 88 },
-    { name: 'Problemlösung', level: 85 },
-    { name: 'Kreativität', level: 83 },
-    { name: 'Organisation & Zeitmanagement', level: 80 },
-    { name: 'Eigenverantwortung', level: 90 },
-    { name: 'Empathie', level: 80 }
+  skillCategories: SkillCategory[] = [
+    {
+      eyebrow: 'Core Stack',
+      title: 'Technologien, die ich produktiv einsetze',
+      description:
+        'Mein technisches Fundament für moderne Webanwendungen, Frontend-Systeme und Fullstack-Projekte.',
+      icon: 'stack',
+      accent: 'cyan',
+      skills: [
+        'TypeScript',
+        'JavaScript',
+        'React',
+        'Next.js',
+        'Angular',
+        'C# / .NET',
+        'Node.js / Express.js',
+        'ASP.NET',
+        'SQL',
+        'MongoDB / NoSQL'
+      ]
+    },
+    {
+      eyebrow: 'Frontend & UX',
+      title: 'Interfaces mit Struktur, Performance und klarer Nutzerführung',
+      description:
+        'Ich entwickle Frontends nicht nur visuell, sondern mit Fokus auf Komponentenarchitektur, Responsiveness und UX.',
+      icon: 'frontend',
+      accent: 'violet',
+      skills: [
+        'Component Architecture',
+        'Responsive Design',
+        'UI / UX Design',
+        'HTML',
+        'CSS / SCSS / SASS',
+        'Tailwind CSS',
+        'Framer Motion',
+        'Performance Optimierung'
+      ]
+    },
+    {
+      eyebrow: 'Backend & Infrastructure',
+      title: 'Deployment, Server und produktive Auslieferung',
+      description:
+        'Von der Entwicklung bis zum Livegang: Infrastruktur, Prozesse und technische Stabilität gehören für mich zum Projekt dazu.',
+      icon: 'server',
+      accent: 'blue',
+      skills: [
+        'Docker',
+        'Docker Compose',
+        'Git / GitHub',
+        'GitHub Actions',
+        'CI / CD',
+        'PM2',
+        'SSH / rsync',
+        'Nginx',
+        "Let's Encrypt / SSL",
+        'Linux Server Deployment'
+      ]
+    },
+    {
+      eyebrow: 'SEO, Tracking & Delivery',
+      title: 'Technische Sichtbarkeit und saubere Projekt-Auslieferung',
+      description:
+        'Ich denke Websites nicht nur als Oberfläche, sondern auch in Bezug auf Sichtbarkeit, Tracking und saubere technische Einbindung.',
+      icon: 'seo',
+      accent: 'emerald',
+      skills: [
+        'Technical SEO',
+        'Meta Tags',
+        'Open Graph',
+        'Canonical URLs',
+        'JSON-LD Structured Data',
+        'Sitemap Generierung',
+        'GA4 Event Tracking',
+        'Scroll-Depth Tracking',
+        'DSGVO-konforme Cookie-Implementierung',
+        'SSR mit Next.js & Angular'
+      ]
+    },
+    {
+      eyebrow: 'Engineering Mindset',
+      title: 'Wie ich Software entwickle',
+      description:
+        'Mein Arbeitsstil basiert auf sauberer Struktur, klaren Verantwortlichkeiten und verständlicher Implementierung.',
+      icon: 'engineering',
+      accent: 'amber',
+      skills: [
+        'Objektorientierte Programmierung (OOP)',
+        'Modulare Architekturen',
+        'Clean Code',
+        'TypeScript Strict Mode',
+        'Analyse fachlicher Anforderungen',
+        'Strukturierte Dokumentation',
+        'Agile Arbeitsweise',
+        'Lernbereitschaft',
+        'Eigenständiges Arbeiten',
+        'Problem Solving'
+      ]
+    }
   ];
 }
