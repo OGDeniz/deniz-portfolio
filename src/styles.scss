@@ -8,53 +8,58 @@ $fa-font-path: '/assets/fonts';
 
 /* CSS Variables for consistent theming */
 :root {
-  /* ===== DARK MODE (Default) ===== */
-  /* Background Colors */
-  --clr-bg-dark: #0E0F11;
-  --clr-bg: #131416;
-  --clr-bg-light: #1C1E21;
-  --clr-bg-lighter: #262A2F;
+  /* ===== DARK MODE (Default) — Deep Space Premium ===== */
+  /* Background Colors — tiefes Anthrazit mit leicht bläulichem Unterton */
+  --clr-bg-dark: #080A0E;
+  --clr-bg: #0D1017;
+  --clr-bg-light: #161B26;
+  --clr-bg-lighter: #1E2638;
 
   /* Text Colors */
-  --clr-text-light: #F5F7FA;
-  --clr-text: #D3D7DE;
-  --clr-text-dark: #9AA0A8;
-  --clr-text-muted: #6F757B;
+  --clr-text-light: #F0F4FF;
+  --clr-text: #C8D0E0;
+  --clr-text-dark: #8896B0;
+  --clr-text-muted: #566278;
 
-  /* Primary - Cyan */
-  --clr-primary: #00C2D1;
-  --clr-primary-dark: #00939E;
-  --clr-primary-light: #00E5F6;
-  --clr-primary-05: rgba(0, 194, 209, 0.05);
-  --clr-primary-10: rgba(0, 194, 209, 0.1);
-  --clr-primary-20: rgba(0, 194, 209, 0.2);
-  --clr-primary-30: rgba(0, 194, 209, 0.3);
+  /* Primary — Electric Cyan */
+  --clr-primary: #22D3EE;
+  --clr-primary-dark: #0891B2;
+  --clr-primary-light: #67E8F9;
+  --clr-primary-05: rgba(34, 211, 238, 0.05);
+  --clr-primary-10: rgba(34, 211, 238, 0.1);
+  --clr-primary-20: rgba(34, 211, 238, 0.2);
+  --clr-primary-30: rgba(34, 211, 238, 0.3);
 
-  /* Secondary - Orange */
-  --clr-secondary: #FF8A3D;
-  --clr-secondary-dark: #CC6D2F;
-  --clr-secondary-light: #FFB280;
-  --clr-secondary-05: rgba(255, 138, 61, 0.05);
-  --clr-secondary-10: rgba(255, 138, 61, 0.1);
-  --clr-secondary-20: rgba(255, 138, 61, 0.2);
+  /* Secondary — Warm Amber */
+  --clr-secondary: #FB923C;
+  --clr-secondary-dark: #EA580C;
+  --clr-secondary-light: #FDBA74;
+  --clr-secondary-05: rgba(251, 146, 60, 0.05);
+  --clr-secondary-10: rgba(251, 146, 60, 0.1);
+  --clr-secondary-20: rgba(251, 146, 60, 0.2);
 
-  /* Accent - Purple */
-  --clr-accent: #8F5BFF;
-  --clr-accent-dark: #693FCC;
-  --clr-accent-light: #B89CFF;
-  --clr-accent-05: rgba(143, 91, 255, 0.05);
-  --clr-accent-10: rgba(143, 91, 255, 0.1);
-  --clr-accent-20: rgba(143, 91, 255, 0.2);
+  /* Accent — Soft Violet */
+  --clr-accent: #A78BFA;
+  --clr-accent-dark: #7C3AED;
+  --clr-accent-light: #C4B5FD;
+  --clr-accent-05: rgba(167, 139, 250, 0.05);
+  --clr-accent-10: rgba(167, 139, 250, 0.1);
+  --clr-accent-20: rgba(167, 139, 250, 0.2);
 
   /* Status Colors */
-  --clr-success: #10b981;
-  --clr-warning: #f59e0b;
-  --clr-error: #ef4444;
-  --clr-info: #3b82f6;
+  --clr-success: #34d399;
+  --clr-warning: #fbbf24;
+  --clr-error: #f87171;
+  --clr-info: #60a5fa;
+
+  /* Surfaces & Borders */
+  --clr-surface: rgba(255, 255, 255, 0.04);
+  --clr-surface-hover: rgba(255, 255, 255, 0.07);
+  --clr-border: rgba(255, 255, 255, 0.08);
 
   /* Neutral overlays */
-  --clr-overlay-dark: rgba(0, 0, 0, 0.3);
-  --clr-overlay-light: rgba(255, 255, 255, 0.05);
+  --clr-overlay-dark: rgba(0, 0, 0, 0.4);
+  --clr-overlay-light: rgba(255, 255, 255, 0.04);
 
   /* Typography */
   --font-base:
@@ -79,93 +84,109 @@ $fa-font-path: '/assets/fonts';
   --transition-slow: 0.3s ease;
 }
 
-/* Light Mode - based on data-theme attribute */
+/* Light Mode - based on data-theme attribute — Warm Editorial: Terrakotta & Salbei */
 html[data-theme="light"] {
-  /* Background Colors */
-  --clr-bg: #faf9f7;
-  --clr-bg-light: #ffffff;
-  --clr-bg-lighter: #f5f3f0;
-  --clr-bg-dark: #ede9e4;
+  /* Background Colors — warmes Cremeweiß, wie altes Papier */
+  --clr-bg: #FAF6F0;
+  --clr-bg-light: #FFF8EF;
+  --clr-bg-lighter: #F2EBE0;
+  --clr-bg-dark: #E5D9CC;
 
-  /* Text Colors */
-  --clr-text-light: #2d2520;
-  --clr-text: #2d2520;
-  --clr-text-dark: #5a4f47;
-  --clr-text-muted: #8b7d75;
+  /* Text Colors — tiefer Espresso-Braun */
+  --clr-text-light: #1C0F08;
+  --clr-text: #2E1A0E;
+  --clr-text-dark: #6B4A30;
+  --clr-text-muted: #A68560;
 
-  /* Primary - Lila */
-  --clr-primary: #7c5aa2;
-  --clr-primary-dark: #5a3d7a;
-  --clr-primary-light: #9b7fb5;
-  --clr-primary-05: rgba(124, 90, 162, 0.05);
-  --clr-primary-10: rgba(124, 90, 162, 0.1);
-  --clr-primary-20: rgba(124, 90, 162, 0.2);
-  --clr-primary-30: rgba(124, 90, 162, 0.3);
+  /* Primary — Gebrannte Terrakotta */
+  --clr-primary: #C44E2A;
+  --clr-primary-dark: #9E3A1C;
+  --clr-primary-light: #D9714D;
+  --clr-primary-05: rgba(196, 78, 42, 0.05);
+  --clr-primary-10: rgba(196, 78, 42, 0.1);
+  --clr-primary-20: rgba(196, 78, 42, 0.2);
+  --clr-primary-30: rgba(196, 78, 42, 0.3);
 
-  /* Secondary - Blau */
-  --clr-secondary: #2d5a96;
-  --clr-secondary-dark: #1f3f66;
-  --clr-secondary-light: #4a7ab5;
-  --clr-secondary-05: rgba(45, 90, 150, 0.05);
-  --clr-secondary-10: rgba(45, 90, 150, 0.1);
-  --clr-secondary-20: rgba(45, 90, 150, 0.2);
+  /* Secondary — Tiefer Salbeigrün */
+  --clr-secondary: #4A7C59;
+  --clr-secondary-dark: #355A40;
+  --clr-secondary-light: #6A9E78;
+  --clr-secondary-05: rgba(74, 124, 89, 0.05);
+  --clr-secondary-10: rgba(74, 124, 89, 0.1);
+  --clr-secondary-20: rgba(74, 124, 89, 0.2);
 
-  /* Accent - Rosa */
-  --clr-accent: #d63384;
-  --clr-accent-dark: #b02860;
-  --clr-accent-light: #e85a9f;
-  --clr-accent-05: rgba(214, 51, 132, 0.05);
-  --clr-accent-10: rgba(214, 51, 132, 0.1);
-  --clr-accent-20: rgba(214, 51, 132, 0.2);
+  /* Accent — Warmes Ocker-Gold */
+  --clr-accent: #C8913A;
+  --clr-accent-dark: #A07228;
+  --clr-accent-light: #DEAD5E;
+  --clr-accent-05: rgba(200, 145, 58, 0.05);
+  --clr-accent-10: rgba(200, 145, 58, 0.1);
+  --clr-accent-20: rgba(200, 145, 58, 0.2);
+
+  /* Status Colors — warm getönt */
+  --clr-success: #3a7d52;
+  --clr-warning: #c8913a;
+  --clr-error: #b83a2a;
+  --clr-info: #3a6a8a;
+
+  /* Surfaces & Borders */
+  --clr-surface: #FFF8EF;
+  --clr-surface-hover: #F2EBE0;
+  --clr-border: rgba(196, 78, 42, 0.15);
 
   /* Overlays */
-  --clr-overlay-dark: rgba(0, 0, 0, 0.08);
-  --clr-overlay-light: rgba(255, 255, 255, 0.5);
+  --clr-overlay-dark: rgba(28, 15, 8, 0.08);
+  --clr-overlay-light: rgba(200, 145, 58, 0.06);
 }
 
 /* Light Mode - fallback for system preference (when no data-theme is set) */
 @media (prefers-color-scheme: light) {
   html:not([data-theme]) {
-    /* Background Colors */
-    --clr-bg: #faf9f7;
-    --clr-bg-light: #ffffff;
-    --clr-bg-lighter: #f5f3f0;
-    --clr-bg-dark: #ede9e4;
+    /* Background Colors — warmes Cremeweiß */
+    --clr-bg: #FAF6F0;
+    --clr-bg-light: #FFF8EF;
+    --clr-bg-lighter: #F2EBE0;
+    --clr-bg-dark: #E5D9CC;
 
-    /* Text Colors */
-    --clr-text-light: #2d2520;
-    --clr-text: #2d2520;
-    --clr-text-dark: #5a4f47;
-    --clr-text-muted: #8b7d75;
+    /* Text Colors — Espresso-Braun */
+    --clr-text-light: #1C0F08;
+    --clr-text: #2E1A0E;
+    --clr-text-dark: #6B4A30;
+    --clr-text-muted: #A68560;
 
-    /* Primary - Lila */
-    --clr-primary: #7c5aa2;
-    --clr-primary-dark: #5a3d7a;
-    --clr-primary-light: #9b7fb5;
-    --clr-primary-05: rgba(124, 90, 162, 0.05);
-    --clr-primary-10: rgba(124, 90, 162, 0.1);
-    --clr-primary-20: rgba(124, 90, 162, 0.2);
-    --clr-primary-30: rgba(124, 90, 162, 0.3);
+    /* Primary — Gebrannte Terrakotta */
+    --clr-primary: #C44E2A;
+    --clr-primary-dark: #9E3A1C;
+    --clr-primary-light: #D9714D;
+    --clr-primary-05: rgba(196, 78, 42, 0.05);
+    --clr-primary-10: rgba(196, 78, 42, 0.1);
+    --clr-primary-20: rgba(196, 78, 42, 0.2);
+    --clr-primary-30: rgba(196, 78, 42, 0.3);
 
-    /* Secondary - Blau */
-    --clr-secondary: #2d5a96;
-    --clr-secondary-dark: #1f3f66;
-    --clr-secondary-light: #4a7ab5;
-    --clr-secondary-05: rgba(45, 90, 150, 0.05);
-    --clr-secondary-10: rgba(45, 90, 150, 0.1);
-    --clr-secondary-20: rgba(45, 90, 150, 0.2);
+    /* Secondary — Tiefer Salbeigrün */
+    --clr-secondary: #4A7C59;
+    --clr-secondary-dark: #355A40;
+    --clr-secondary-light: #6A9E78;
+    --clr-secondary-05: rgba(74, 124, 89, 0.05);
+    --clr-secondary-10: rgba(74, 124, 89, 0.1);
+    --clr-secondary-20: rgba(74, 124, 89, 0.2);
 
-    /* Accent - Rosa */
-    --clr-accent: #d63384;
-    --clr-accent-dark: #b02860;
-    --clr-accent-light: #e85a9f;
-    --clr-accent-05: rgba(214, 51, 132, 0.05);
-    --clr-accent-10: rgba(214, 51, 132, 0.1);
-    --clr-accent-20: rgba(214, 51, 132, 0.2);
+    /* Accent — Warmes Ocker-Gold */
+    --clr-accent: #C8913A;
+    --clr-accent-dark: #A07228;
+    --clr-accent-light: #DEAD5E;
+    --clr-accent-05: rgba(200, 145, 58, 0.05);
+    --clr-accent-10: rgba(200, 145, 58, 0.1);
+    --clr-accent-20: rgba(200, 145, 58, 0.2);
+
+    /* Surfaces & Borders */
+    --clr-surface: #FFF8EF;
+    --clr-surface-hover: #F2EBE0;
+    --clr-border: rgba(196, 78, 42, 0.15);
 
     /* Overlays */
-    --clr-overlay-dark: rgba(0, 0, 0, 0.08);
-    --clr-overlay-light: rgba(255, 255, 255, 0.5);
+    --clr-overlay-dark: rgba(28, 15, 8, 0.08);
+    --clr-overlay-light: rgba(200, 145, 58, 0.06);
   }
 }
 
