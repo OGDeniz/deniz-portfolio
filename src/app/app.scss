@@ -11,4 +11,6 @@ router-outlet {
 main {
   display: block;
   flex: 1;
+  /* Eigene View-Transition-Gruppe: nur der Content schiebt sich, Navbar/Footer bleiben fix (siehe styles.scss) */
+  view-transition-name: main-content;
 }

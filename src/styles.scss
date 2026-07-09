@@ -286,6 +286,11 @@ a:hover {
   outline-offset: 4px;
 }
 
+/* ===== CUSTOM CURSOR ===== */
+/* app-cursor läuft nur Desktop / Fine-Pointer als Deko-Layer ÜBER dem echten
+   System-Cursor mit (siehe cursor.component.ts) — der native Pfeil bleibt sichtbar,
+   damit exaktes Klicken/Navigieren nicht beeinträchtigt wird. */
+
 /* Reduce Motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -327,11 +332,67 @@ a:hover {
   color: white;
 }
 
+/* ===== PAGE TRANSITIONS (View Transitions API, see app.config.ts withViewTransitions) ===== */
+/* Nur die "main-content"-Gruppe (siehe app.scss) schiebt sich; Navbar/Footer bleiben unangetastet. */
+::view-transition-group(root) {
+  animation: none;
+}
+
+::view-transition-old(main-content),
+::view-transition-new(main-content) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(main-content) {
+  animation-name: page-push-out;
+}
+
+::view-transition-new(main-content) {
+  animation-name: page-push-in;
+}
+
+@keyframes page-push-out {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes page-push-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 /* ===== SCROLL ANIMATIONS ===== */
 .scroll-animate-in {
-  animation: fadeInUp 0.6s ease-out forwards !important;
-  opacity: 1 !important;
-  transform: translateY(0) !important;
+  animation-name: fadeInUp;
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: forwards;
+  animation-delay: var(--scroll-delay, 0ms);
+  opacity: 1;
+}
+
+[data-scroll-variant='left'].scroll-animate-in {
+  animation-name: fadeInLeft;
+}
+
+[data-scroll-variant='right'].scroll-animate-in {
+  animation-name: fadeInRight;
+}
+
+[data-scroll-variant='scale'].scroll-animate-in {
+  animation-name: scaleIn;
+}
+
+[data-scroll-variant='blur'].scroll-animate-in {
+  animation-name: blurIn;
 }
 
 @keyframes fadeInUp {
@@ -378,11 +439,31 @@ a:hover {
   }
 }
 
+@keyframes blurIn {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-animate-in,
   [appScrollAnimate] {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
 }

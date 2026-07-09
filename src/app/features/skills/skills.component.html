@@ -70,6 +70,8 @@
         class="skill-card"
         [attr.data-accent]="category.accent"
         [appScrollAnimate]="'skill-card-' + i"
+        variant="blur"
+        [scrollDelay]="(i % 3) * 70"
       >
         <div class="skill-card__header">
           <div class="skill-card__top">
